@@ -1,0 +1,35 @@
+MIT License
+
+Copyright (c) 2026 House of Zera
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+This licence covers the source code only.
+
+Textile photographs in assets/img/fabric/ are third-party works, each licensed
+individually under CC BY, CC BY-SA or CC0. Per-image title, creator, licence and
+source URL are recorded in the `fabric` block of every item in
+data/inventory.json, printed on each product card, and listed at
+docs/data-sources.html.
+
+House of Zera brand photography (assets/img/thrifted-*.jpg, manifesto-strip.jpg,
+hero-1.png) and the House of Zera and Inclusively Zera names and marks are
+© House of Zera, all rights reserved, and are not covered by the MIT licence.

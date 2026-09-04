@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-5969aef9-bd06-4c6c-8d39-9881b62737de/styles.css">
+<script src="_ds/industry-5969aef9-bd06-4c6c-8d39-9881b62737de/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin: 0; background: var(--color-bg); }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  a { color: var(--color-accent-700); text-decoration: none; transition: color .14s cubic-bezier(.22,.61,.36,1); }
+  a:hover { color: var(--color-accent-900); }
+
+  nav a { position: relative; }
+  nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px;
+    background: var(--color-accent); transform: scaleX(0); transform-origin: left;
+    transition: transform .18s cubic-bezier(.22,.61,.36,1); }
+  nav a:hover::after { transform: scaleX(1); }
+
+  .btn { transition: background-color .14s cubic-bezier(.22,.61,.36,1), border-color .14s cubic-bezier(.22,.61,.36,1), color .14s cubic-bezier(.22,.61,.36,1), box-shadow .18s cubic-bezier(.22,.61,.36,1), transform .18s cubic-bezier(.22,.61,.36,1); }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn:active { transform: translateY(0); box-shadow: none; }
+  .input { transition: border-color .14s cubic-bezier(.22,.61,.36,1), box-shadow .18s cubic-bezier(.22,.61,.36,1); }
+  .input:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 16%, transparent); }
+
+  .blueprint .corner { transition: opacity .18s cubic-bezier(.22,.61,.36,1); }
+  .table thead th { background: var(--color-accent-900); color: var(--color-bg); border-color: var(--color-accent-900); }
+  .table tbody tr { transition: background-color .16s cubic-bezier(.22,.61,.36,1); }
+  .table tbody tr:hover { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+  .cell { transition: background-color .16s cubic-bezier(.22,.61,.36,1); }
+  .cell:hover { background: color-mix(in srgb, var(--color-accent) 5%, transparent); }
+  .row { transition: background-color .16s cubic-bezier(.22,.61,.36,1); }
+  .row:hover { background: color-mix(in srgb, var(--color-accent) 6%, transparent); }
+
+  .rise { opacity: 0; transform: translateY(14px);
+    transition: opacity .5s cubic-bezier(.22,.61,.36,1), transform .5s cubic-bezier(.22,.61,.36,1); }
+  .rise.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .rise { opacity: 1; transform: none; transition: none; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); position:relative; overflow-x:hidden">
+
+  <sc-if value="{{ gridOverlay }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute; inset:0; pointer-events:none; z-index:5; background-image:linear-gradient(to right, color-mix(in srgb, var(--color-accent) 14%, transparent) 1px, transparent 1px); background-size:calc(100% / 12) 100%"></div>
+  </sc-if>
+
+  <header style="position:sticky; top:0; z-index:10; background:color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter:blur(8px); border-bottom:1px solid color-mix(in srgb, var(--color-accent) 32%, var(--color-divider))">
+    <div style="max-width:1240px; margin:0 auto; padding:14px 32px; display:flex; align-items:center; gap:32px">
+      <div style="display:flex; flex-direction:column; line-height:0.95; margin-right:auto">
+        <span style="font-family:var(--font-heading); font-size:11px; letter-spacing:0.42em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 62%, transparent)">House of</span>
+        <span style="font-family:var(--font-heading); font-weight:700; font-size:22px; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-accent-700)">Zera.</span>
+      </div>
+      <nav style="display:flex; gap:28px; font-family:var(--font-heading); font-size:14px; letter-spacing:0.1em; text-transform:uppercase">
+        <a href="#research" style="color:var(--color-text)">Research</a>
+        <a href="#principles" style="color:var(--color-text)">Principles</a>
+        <a href="#network" style="color:var(--color-text)">Network</a>
+      </nav>
+      <div style="display:flex; gap:10px; align-items:center">
+        <button class="btn btn-secondary" type="button">Sign in</button>
+        <button class="btn btn-primary blueprint" type="button" style="position:relative">
+          {{ ctaLabel }}
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section style="background:color-mix(in srgb, var(--color-accent) 7%, var(--color-bg)); color:var(--color-text); border-bottom:1px solid color-mix(in srgb, var(--color-accent) 28%, var(--color-divider))">
+    <div style="max-width:1240px; margin:0 auto; padding:64px 32px 60px; display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:end">
+      <div>
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px">
+          <span style="width:36px; height:1px; background:var(--color-accent)"></span>
+          <span style="font-family:var(--font-heading); font-size:12px; letter-spacing:0.3em; color:var(--color-accent-700)">Fashion infrastructure</span>
+        </div>
+        <h1 style="font-size:62px; line-height:0.98; letter-spacing:-0.015em; margin:0 0 20px; text-wrap:balance"><span style="color:var(--color-accent-700)">Demand signals,</span> translated into physical product.</h1>
+        <p style="font-size:17px; line-height:1.5; max-width:48ch; color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0 0 26px">House of Zera builds the layer between what culture wants and what gets made — forecasting, production and circularity as one connected system for independent brands and creators.</p>
+        <div>
+          <button class="btn btn-primary blueprint" type="button" style="position:relative; padding:12px 22px; font-size:15px">
+            {{ ctaLabel }}
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          </button>
+          </div>
+      </div>
+      <div class="blueprint" style="position:relative; padding:0">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex; flex-direction:column">
+          <div style="padding:14px 20px; background:var(--color-accent-900); font-family:var(--font-heading); font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:var(--color-bg)">System overview</div>
+          <div class="row" style="display:flex; justify-content:space-between; gap:16px; padding:18px 20px; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+            <span style="font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em; color:var(--color-accent-800)">Signal</span>
+            <span style="font-size:14px; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:right">Trend velocity read across platforms</span>
+          </div>
+          <div class="row" style="display:flex; justify-content:space-between; gap:16px; padding:18px 20px; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+            <span style="font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em; color:var(--color-accent-800)">Forecast</span>
+            <span style="font-size:14px; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:right">Demand converted to unit plans</span>
+          </div>
+          <div class="row" style="display:flex; justify-content:space-between; gap:16px; padding:18px 20px; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+            <span style="font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em; color:var(--color-accent-800)">Produce</span>
+            <span style="font-size:14px; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:right">Vetted makers, matched by capability</span>
+          </div>
+          <div class="row" style="display:flex; justify-content:space-between; gap:16px; padding:18px 20px">
+            <span style="font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em; color:var(--color-accent-800)">Return</span>
+            <span style="font-size:14px; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:right">Value redistributed, not just diverted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rise" id="research" style="max-width:1240px; margin:0 auto; padding:64px 32px 0">
+    <div style="display:flex; align-items:baseline; gap:20px; margin-bottom:26px">
+      <span style="font-family:var(--font-heading); font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-accent-700)">01 / Research</span>
+      <span style="flex:1; height:1px; background:color-mix(in srgb, var(--color-accent) 30%, var(--color-divider))"></span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1.6fr; gap:40px; align-items:start; margin-bottom:28px">
+      <h2 style="font-size:36px; line-height:1.05; margin:0">What the research found</h2>
+      <p style="font-size:17px; max-width:60ch; margin:0; color:color-mix(in srgb, var(--color-text) 78%, transparent)">Six lines of inquiry, each ending in a decision about what to build.</p>
+    </div>
+    <div class="blueprint" style="position:relative; padding:0">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <table class="table" style="width:100%; border-collapse:collapse; font-size:15px; --thead:1">
+        <thead>
+          <tr>
+            <th style="width:22%; padding:12px 20px">Research</th>
+            <th style="width:40%; padding:12px 20px">What it discovered</th>
+            <th style="width:38%; padding:12px 20px">HOZ takeaway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:14px 20px; font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em">Where Is Value Lost?</td>
+            <td style="padding:14px 20px; color:color-mix(in srgb, var(--color-text) 78%, transparent)">Social media accelerates trends and causes products to lose perceived value quickly.</td>
+            <td style="padding:14px 20px; font-weight:600; color:var(--color-accent-800)">Value is increasingly determined by relevance.</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px; font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em">Supply Chain / Modern Commerce</td>
+            <td style="padding:14px 20px; color:color-mix(in srgb, var(--color-text) 78%, transparent)">Business systems cannot translate rapidly changing demand into physical production.</td>
+            <td style="padding:14px 20px; font-weight:600; color:var(--color-accent-800)">We need infrastructure connecting demand signals to action.</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px; font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em">Human Condition</td>
+            <td style="padding:14px 20px; color:color-mix(in srgb, var(--color-text) 78%, transparent)">Identity, aesthetics, community, fashion, and sustainability must be considered together.</td>
+            <td style="padding:14px 20px; font-weight:600; color:var(--color-accent-800)">Define HOZ's philosophy before defining its products.</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px; font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em">Imperialism</td>
+            <td style="padding:14px 20px; color:color-mix(in srgb, var(--color-text) 78%, transparent)">Linear systems extract value from labor, nature, economies, and culture.</td>
+            <td style="padding:14px 20px; font-weight:600; color:var(--color-accent-800)">Circularity should redistribute value, not just reduce waste.</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px; font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em">Third Place</td>
+            <td style="padding:14px 20px; color:color-mix(in srgb, var(--color-text) 78%, transparent)">Digital commerce can imitate community without actually creating human connection.</td>
+            <td style="padding:14px 20px; font-weight:600; color:var(--color-accent-800)">Community should exist independently of transactions.</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px; font-family:var(--font-heading); font-size:19px; letter-spacing:0.01em; border-bottom:none">Fashion Lens</td>
+            <td style="padding:14px 20px; color:color-mix(in srgb, var(--color-text) 78%, transparent); border-bottom:none">Independent brands lack manufacturing, trust, forecasting, collaboration, and responsiveness infrastructure.</td>
+            <td style="padding:14px 20px; font-weight:600; color:var(--color-accent-800); border-bottom:none">HOZ can build infrastructure for independent creators.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="rise" id="principles" style="max-width:1240px; margin:0 auto; padding:60px 32px 0">
+    <div style="display:flex; align-items:baseline; gap:20px; margin-bottom:26px">
+      <span style="font-family:var(--font-heading); font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-accent-700)">02 / Principles</span>
+      <span style="flex:1; height:1px; background:color-mix(in srgb, var(--color-accent) 30%, var(--color-divider))"></span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1.6fr; gap:40px; align-items:start; margin-bottom:28px">
+      <h2 style="font-size:36px; line-height:1.05; margin:0">What are the design principles?</h2>
+      <p style="font-size:17px; max-width:60ch; margin:0; color:color-mix(in srgb, var(--color-text) 78%, transparent)">The process gives us concrete steps of design; principles are guiding pillars of how we make decisions during the process.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:0; border-top:1px solid var(--color-accent)">
+      <div class="cell" style="display:flex; gap:22px; padding:18px 26px 18px 0; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider)); border-right:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+        <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; color:var(--color-bg); background:var(--color-accent); padding:3px 6px; align-self:flex-start; margin-top:6px">01</span>
+        <div>
+          <h4 style="font-size:22px; letter-spacing:0; margin:0 0 6px">Functionality</h4>
+          <p style="margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent)">Does it perform correctly, reliably, and under specific conditions?</p>
+        </div>
+      </div>
+      <div class="cell" style="display:flex; gap:22px; padding:18px 0 18px 26px; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+        <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; color:var(--color-bg); background:var(--color-accent); padding:3px 6px; align-self:flex-start; margin-top:6px">02</span>
+        <div>
+          <h4 style="font-size:22px; letter-spacing:0; margin:0 0 6px">Safety</h4>
+          <p style="margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent)">Safety is number one! Protect people, property, and systems.</p>
+        </div>
+      </div>
+      <div class="cell" style="display:flex; gap:22px; padding:18px 26px 18px 0; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider)); border-right:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+        <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; color:var(--color-bg); background:var(--color-accent); padding:3px 6px; align-self:flex-start; margin-top:6px">03</span>
+        <div>
+          <h4 style="font-size:22px; letter-spacing:0; margin:0 0 6px">Sustainability</h4>
+          <p style="margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent)">Minimize environmental impact, drive for efficient manufacturing.</p>
+        </div>
+      </div>
+      <div class="cell" style="display:flex; gap:22px; padding:18px 0 18px 26px; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+        <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; color:var(--color-bg); background:var(--color-accent); padding:3px 6px; align-self:flex-start; margin-top:6px">04</span>
+        <div>
+          <h4 style="font-size:22px; letter-spacing:0; margin:0 0 6px">Cost-effectiveness</h4>
+          <p style="margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent)">Efficient use of resources; how to match performance with budget?</p>
+        </div>
+      </div>
+      <div class="cell" style="display:flex; gap:22px; padding:18px 26px 18px 0; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider)); border-right:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+        <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; color:var(--color-bg); background:var(--color-accent); padding:3px 6px; align-self:flex-start; margin-top:6px">05</span>
+        <div>
+          <h4 style="font-size:22px; letter-spacing:0; margin:0 0 6px">Aesthetics &amp; Usability</h4>
+          <p style="margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent)">Make it beautiful and intuitive- looks good, easy to understand.</p>
+        </div>
+      </div>
+      <div class="cell" style="display:flex; gap:22px; padding:18px 0 18px 26px; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+        <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; color:var(--color-bg); background:var(--color-accent); padding:3px 6px; align-self:flex-start; margin-top:6px">06</span>
+        <div>
+          <h4 style="font-size:22px; letter-spacing:0; margin:0 0 6px">Scalability &amp; Manufacturing</h4>
+          <p style="margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent)">Can it be built and repeated? Efficiently, time after time?</p>
+        </div>
+      </div>
+      <div class="cell" style="display:flex; gap:22px; padding:18px 26px 18px 0; border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider)); border-right:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))">
+        <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; color:var(--color-bg); background:var(--color-accent); padding:3px 6px; align-self:flex-start; margin-top:6px">07</span>
+        <div>
+          <h4 style="font-size:22px; letter-spacing:0; margin:0 0 6px">Ethics &amp; Social Responsibility</h4>
+          <p style="margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent)">Design with positive impact in mind.</p>
+        </div>
+      </div>
+      <div style="border-bottom:1px solid color-mix(in srgb, var(--color-accent) 24%, var(--color-divider))"></div>
+    </div>
+  </section>
+
+  <section class="rise" id="network" style="max-width:1240px; margin:0 auto; padding:60px 32px 0">
+    <div style="display:flex; align-items:baseline; gap:20px; margin-bottom:26px">
+      <span style="font-family:var(--font-heading); font-size:12px; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-accent-700)">03 / Network</span>
+      <span style="flex:1; height:1px; background:color-mix(in srgb, var(--color-accent) 30%, var(--color-divider))"></span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:stretch">
+      <figure class="blueprint duotone" style="position:relative; padding:0; margin:0; min-height:420px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <image-slot id="hoz-network" shape="rect" placeholder="Drop a studio or atelier photograph"></image-slot>
+      </figure>
+      <div style="display:flex; flex-direction:column; justify-content:space-between; gap:28px">
+        <div>
+          <h2 style="font-size:34px; line-height:1.05; margin:0 0 16px">Built for independent creators</h2>
+          <p style="font-size:17px; margin:0; color:color-mix(in srgb, var(--color-text) 78%, transparent); max-width:46ch">Independent brands lack manufacturing, trust, forecasting, collaboration, and responsiveness infrastructure. House of Zera supplies it.</p>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:color-mix(in srgb, var(--color-accent) 40%, var(--color-divider))">
+          <div class="cell" style="background:var(--color-bg); padding:22px">
+            <div style="font-family:var(--font-heading); font-size:26px; line-height:1.1; color:var(--color-accent-800)">Signal → SKU</div>
+            <div style="font-size:14px; color:color-mix(in srgb, var(--color-text) 62%, transparent)">One continuous record</div>
+          </div>
+          <div class="cell" style="background:var(--color-bg); padding:22px">
+            <div style="font-family:var(--font-heading); font-size:26px; line-height:1.1; color:var(--color-accent-800)">Vetted makers</div>
+            <div style="font-size:14px; color:color-mix(in srgb, var(--color-text) 62%, transparent)">Matched by capability</div>
+          </div>
+          <div class="cell" style="background:var(--color-bg); padding:22px">
+            <div style="font-family:var(--font-heading); font-size:26px; line-height:1.1; color:var(--color-accent-800)">Circular by default</div>
+            <div style="font-size:14px; color:color-mix(in srgb, var(--color-text) 62%, transparent)">Return paths designed in</div>
+          </div>
+          <div class="cell" style="background:var(--color-bg); padding:22px">
+            <div style="font-family:var(--font-heading); font-size:26px; line-height:1.1; color:var(--color-accent-800)">Community first</div>
+            <div style="font-size:14px; color:color-mix(in srgb, var(--color-text) 62%, transparent)">Independent of the sale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rise" style="max-width:1240px; margin:60px auto 0; padding:0 32px 64px">
+    <div class="blueprint" style="position:relative; background:color-mix(in srgb, var(--color-accent) 7%, var(--color-bg)); border-color:color-mix(in srgb, var(--color-accent) 40%, var(--color-divider)); padding:44px 44px; display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:center">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div>
+        <h2 style="font-size:26px; line-height:1.1; margin:0 0 14px">Define the philosophy before the product.</h2>
+        <p style="font-size:17px; margin:0; color:color-mix(in srgb, var(--color-text) 76%, transparent); max-width:50ch">Early access is opening to a small group of independent brands, manufacturers and researchers.</p>
+      </div>
+      <form style="display:flex; flex-direction:column; gap:12px" onSubmit="{{ onSubmit }}">
+        <div class="field">
+          <label for="hoz-email">Work email</label>
+          <input class="input" id="hoz-email" type="email" placeholder="you@studio.com">
+        </div>
+        <button class="btn btn-primary btn-block blueprint" type="submit" style="position:relative; padding:12px 22px; font-size:15px">
+          {{ ctaLabel }}
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid color-mix(in srgb, var(--color-accent) 32%, var(--color-divider))">
+    <div style="max-width:1240px; margin:0 auto; padding:32px; display:flex; align-items:center; gap:32px; flex-wrap:wrap">
+      <span style="font-family:var(--font-heading); font-size:14px; letter-spacing:0.18em; text-transform:uppercase; margin-right:auto">House of Zera.</span>
+      <span style="font-size:13px; color:color-mix(in srgb, var(--color-text) 55%, transparent)">© 2026</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Request access&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;gridOverlay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const els = Array.from(document.querySelectorAll(".rise"));
+    if (!("IntersectionObserver" in window)) { els.forEach(e => e.classList.add("in")); return; }
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) { en.target.classList.add("in"); this._io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.05 });
+    els.forEach(e => this._io.observe(e));
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  renderVals() {
+    return {
+      ctaLabel: this.props.ctaLabel ?? "Request access",
+      gridOverlay: this.props.gridOverlay ?? false,
+      onSubmit: (e) => e.preventDefault(),
+    };
+  }
+}
+</script>
+</body>
+</html>

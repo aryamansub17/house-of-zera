@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inclusively Zera — Secondhand, made new</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/a11y.css">
+<meta name="description" content="Inclusively Zera — a secondhand and deadstock storefront by House of Zera, built so that screen reader, keyboard, low-vision, motor and cognitive access are part of the product rather than a retrofit.">
+<meta name="color-scheme" content="light dark">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div aria-live="polite" class="sr-only" id="live-region"></div>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <div class="logo-block">
+      <a class="logo" href="#top">Inclusively <em>Zera</em></a>
+      <p class="logo-subtitle">by House of Zera</p>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#main">Shop</a>
+      <a href="#story">Our story</a>
+      <a href="docs/accessibility.html">Accessibility</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="cart-open-btn" aria-haspopup="dialog" aria-controls="cart-drawer">
+        Bag
+        <span class="cart-count" id="cart-count" aria-hidden="true">0</span>
+        <span class="sr-only" id="cart-count-sr">0 items in your bag</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="a11y-bar">
+    <div class="wrap a11y-row" role="group" aria-label="Quick accessibility settings">
+      <div class="a11y-group">
+        <span class="label" id="lbl-textsize">Text size</span>
+        <button type="button" data-textsize="down" aria-label="Decrease text size">A&#8722;</button>
+        <button type="button" data-textsize="reset" aria-label="Reset text size" id="textsize-reset">A</button>
+        <button type="button" data-textsize="up" aria-label="Increase text size">A+</button>
+      </div>
+      <div class="a11y-group">
+        <span class="label">High contrast</span>
+        <button type="button" id="contrast-toggle" aria-pressed="false">Off</button>
+      </div>
+      <div class="a11y-group">
+        <span class="label">Read aloud</span>
+        <button type="button" id="tts-toggle" aria-pressed="false">Off</button>
+      </div>
+      <div class="a11y-group a11y-group-end">
+        <button type="button" class="a11y-open" id="a11y-open" aria-haspopup="dialog" aria-controls="a11y-panel">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="16" height="16"><circle cx="12" cy="4.2" r="2.1" fill="currentColor"/><path d="M3.6 8.1h16.8M12 6.6v7.2m0 0-3.3 7.5m3.3-7.5 3.3 7.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+          All accessibility settings
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<section class="hero" aria-label="Introduction">
+  <div class="hero-copy">
+    <p class="eyebrow fade-item" style="transition-delay:0ms;">Secondhand &middot; Restyled &middot; Deadstock</p>
+    <h1 class="fade-item" style="transition-delay:120ms;">Clothes worth a <em>second life</em></h1>
+    <p class="lede fade-item" style="transition-delay:240ms;">Every piece in the shop was sourced, mended, or restyled by hand. Answer five quick questions and we'll show you the pieces most worth your time.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-secondary fade-item" style="transition-delay:360ms;" href="#story">Read our story</a>
+      <button type="button" class="btn btn-secondary fade-item btn-speak" style="transition-delay:420ms;" id="audio-guide-open" aria-haspopup="dialog" aria-controls="audio-guide">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="16" height="16"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        Listen to the audio guide
+      </button>
+    </div>
+    <div class="sourcing-note" id="sourcing-note"></div>
+  </div>
+  <div class="hero-media">
+    <img src="assets/img/thrifted-product.jpg" alt="Two garments photographed suspended against a blue-grey gradient: a black open-knit wrap with long fringe layered over a pleated metallic slip, and a cream crochet top pieced from lace and check panels.">
+  </div>
+</section>
+
+<main id="main" class="wrap">
+
+  <section id="quiz-section" aria-labelledby="quiz-heading">
+    <div class="quiz-wrap">
+      <div class="quiz-intro">
+        <h2 id="quiz-heading">Find your matches</h2>
+        <p>Five short questions. We'll use your answers to sort the collection and show you why each piece fits.</p>
+      </div>
+
+      <div class="quiz-progress">
+        <div class="quiz-progress-track">
+          <div class="quiz-progress-fill" id="quiz-progress-fill" style="width:20%;"></div>
+        </div>
+        <p class="quiz-progress-label" id="quiz-progress-label" role="status">Question 1 of 5</p>
+      </div>
+
+      <form class="quiz-card" id="quiz-form" novalidate>
+
+        <fieldset data-step="0">
+          <legend>What style are you looking for?</legend>
+          <div class="quiz-options" data-group="style" data-mode="single">
+            <label class="quiz-option"><input type="radio" name="style" value="business"><span class="quiz-option-label">Business</span></label>
+            <label class="quiz-option"><input type="radio" name="style" value="casual"><span class="quiz-option-label">Casual</span></label>
+            <label class="quiz-option"><input type="radio" name="style" value="party"><span class="quiz-option-label">Party</span></label>
+            <label class="quiz-option"><input type="radio" name="style" value="athletic"><span class="quiz-option-label">Athletic</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="1" hidden>
+          <legend>What types of clothing are you looking for?</legend>
+          <p class="quiz-hint">Choose as many as apply.</p>
+          <div class="quiz-options" data-group="types" data-mode="multi">
+            <label class="quiz-option"><input type="checkbox" name="types" value="tops"><span class="quiz-option-label">Tops</span></label>
+            <label class="quiz-option"><input type="checkbox" name="types" value="bottoms"><span class="quiz-option-label">Bottoms</span></label>
+            <label class="quiz-option"><input type="checkbox" name="types" value="dresses"><span class="quiz-option-label">Dresses</span></label>
+            <label class="quiz-option"><input type="checkbox" name="types" value="bathing suits"><span class="quiz-option-label">Bathing suits</span></label>
+            <label class="quiz-option"><input type="checkbox" name="types" value="two-piece sets"><span class="quiz-option-label">Two-piece sets</span></label>
+            <label class="quiz-option"><input type="checkbox" name="types" value="shoes"><span class="quiz-option-label">Shoes</span></label>
+            <label class="quiz-option"><input type="checkbox" name="types" value="jackets"><span class="quiz-option-label">Jackets</span></label>
+            <label class="quiz-option"><input type="checkbox" name="types" value="intimates"><span class="quiz-option-label">Intimates</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="2" hidden>
+          <legend>Who are you looking to get clothing for?</legend>
+          <div class="quiz-options" data-group="audience" data-mode="single">
+            <label class="quiz-option"><input type="radio" name="audience" value="women"><span class="quiz-option-label">Women</span></label>
+            <label class="quiz-option"><input type="radio" name="audience" value="unisex"><span class="quiz-option-label">Unisex</span></label>
+            <label class="quiz-option"><input type="radio" name="audience" value="men"><span class="quiz-option-label">Men</span></label>
+            <label class="quiz-option"><input type="radio" name="audience" value="kids"><span class="quiz-option-label">Kids</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="3" hidden>
+          <legend>What sort of material do you want in your clothing?</legend>
+          <p class="quiz-hint">Choose as many as apply.</p>
+          <div class="quiz-options" data-group="materials" data-mode="multi">
+            <label class="quiz-option"><input type="checkbox" name="materials" value="silks"><span class="quiz-option-label">Silks</span></label>
+            <label class="quiz-option"><input type="checkbox" name="materials" value="polyester"><span class="quiz-option-label">Polyester</span></label>
+            <label class="quiz-option"><input type="checkbox" name="materials" value="wool"><span class="quiz-option-label">Wool</span></label>
+            <label class="quiz-option"><input type="checkbox" name="materials" value="organic cotton"><span class="quiz-option-label">Organic cotton</span></label>
+            <label class="quiz-option"><input type="checkbox" name="materials" value="nylon"><span class="quiz-option-label">Nylon</span></label>
+            <label class="quiz-option"><input type="checkbox" name="materials" value="acrylic"><span class="quiz-option-label">Acrylic</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset data-step="4" hidden>
+          <legend>What kind of embellishments are you comfortable with?</legend>
+          <p class="quiz-hint">Choose as many as apply.</p>
+          <div class="quiz-options" data-group="embellishments" data-mode="multi">
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="buttons"><span class="quiz-option-label">Buttons</span></label>
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="ruffles"><span class="quiz-option-label">Ruffles</span></label>
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="mesh"><span class="quiz-option-label">Mesh</span></label>
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="fringe"><span class="quiz-option-label">Fringe</span></label>
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="patterns"><span class="quiz-option-label">Patterns</span></label>
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="tags"><span class="quiz-option-label">Tags</span></label>
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="inelastic-waistband"><span class="quiz-option-label">Inelastic waistband</span></label>
+            <label class="quiz-option"><input type="checkbox" name="embellishments" value="none"><span class="quiz-option-label">None of the above</span></label>
+          </div>
+        </fieldset>
+
+        <p class="quiz-error" id="quiz-error" hidden>Choose at least one option to continue.</p>
+
+        <div class="quiz-nav">
+          <button type="button" class="btn btn-secondary" id="quiz-back" disabled>Back</button>
+          <button type="button" class="btn btn-primary" id="quiz-next">Next</button>
+        </div>
+      </form>
+
+      <div class="quiz-skip">
+        <button type="button" id="quiz-skip-btn">Skip the quiz and browse everything</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop-section" hidden>
+    <div class="shop-head">
+      <div aria-hidden="true"></div>
+      <div class="shop-head-inner">
+        <div class="shop-head-title">
+          <h2>Your matches</h2>
+          <p class="result-count" id="result-count" role="status">8 pieces</p>
+        </div>
+        <div class="sort-row">
+          <label for="sort">Sort by</label>
+          <select id="sort">
+            <option value="match">Best match</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="shop-grid">
+      <aside aria-label="Filter products">
+        <fieldset class="filter-group">
+          <legend>Size</legend>
+          <label class="check-row">
+            <input type="checkbox" id="size-xs" data-filter="size" value="XS">
+            <span>XS</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="size-s" data-filter="size" value="S">
+            <span>S</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="size-m" data-filter="size" value="M">
+            <span>M</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="size-l" data-filter="size" value="L">
+            <span>L</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="size-xl" data-filter="size" value="XL">
+            <span>XL</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="size-xxl" data-filter="size" value="XXL">
+            <span>XXL</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" id="size-xxxl" data-filter="size" value="XXXL">
+            <span>XXXL</span>
+          </label>
+        </fieldset>
+
+        <fieldset class="filter-group">
+          <legend>Dressing needs</legend>
+          <p class="filter-hint">Filter by how a piece is put on, not just how it looks.</p>
+          <label class="check-row">
+            <input type="checkbox" data-filter="fit" value="pull-on">
+            <span>Pulls on, no fastenings</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" data-filter="fit" value="one-handed">
+            <span>Can be fastened one-handed</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" data-filter="fit" value="seated">
+            <span>Cut for seated wear</span>
+          </label>
+          <label class="check-row">
+            <input type="checkbox" data-filter="fit" value="tagless">
+            <span>No sewn-in tags</span>
+          </label>
+        </fieldset>
+
+        <div class="filter-group">
+          <label class="filter-label" for="channel-filter">Sourcing channel</label>
+          <p class="filter-hint">Every piece is routed from a reuse channel opened up by EU circularity law.</p>
+          <select id="channel-filter" class="channel-select">
+            <option value="">All channels</option>
+          </select>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem;">
+          <button type="button" class="btn btn-secondary" id="mens-bottoms-btn" style="width:100%;">Men's bottoms sizes</button>
+          <button type="button" class="btn btn-secondary" id="womens-bottoms-btn" style="width:100%;">Women's bottoms sizes</button>
+        </div>
+
+        <div class="quiz-summary" id="quiz-summary"></div>
+
+        <button type="button" class="btn btn-secondary" id="clear-filters" style="width:100%;margin-bottom:0.75rem;">Clear all filters</button>
+        <button type="button" class="btn btn-secondary" id="retake-quiz-btn" style="width:100%;">Edit quiz choices</button>
+      </aside>
+
+      <div>
+        <ul class="product-grid" id="product-grid" style="list-style:none;margin:0;padding:0;"></ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="brand-credit" id="story" style="margin-top:3.5rem;overflow:hidden;">
+  <div class="wrap">
+    <div id="story-shift">
+      <div class="story-row">
+        <div aria-hidden="true"></div>
+        <div class="align-text" id="story-text">
+          <h2 class="fade-item" style="font-size:1.7rem;margin-bottom:0.9rem;transition-delay:0ms;">Why inclusivity in fashion <em>matters</em></h2>
+          <p class="fade-item" style="max-width:64ch;font-size:1.05rem;transition-delay:120ms;"><span class="t-letter">T</span>he fashion industry produces clothing that isn&rsquo;t always inclusive. We want to make sure that everyone has the ability to freely express themselves through how they dress &mdash; and that everyone has the ability to access it too. At House of Zera, we strive to make fashion more transparent and clothing more accessible to people like you.</p>
+        </div>
+      </div>
+      <hr id="story-divider" class="fade-item" style="border:none;border-top:1px solid rgba(237,216,196,0.25);width:260px;transition-delay:240ms;">
+      <div class="story-row">
+        <div aria-hidden="true"></div>
+        <div class="align-text" id="credit-text">
+          <h2 class="fade-item" style="transition-delay:340ms;">House of <em>Zera</em></h2>
+          <p class="fade-item" style="transition-delay:440ms;">A global innovation ecosystem for fashion, physical goods, and circularity, starting at the University of Texas at Austin.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="faq">
+  <div class="wrap foot-row">
+    <p>© 2026 Inclusively Zera. Built for everyone, on purpose.</p>
+    <p><a href="docs/accessibility.html">Accessibility</a> &middot; <a href="docs/data-sources.html">Sourcing database</a> &middot; Email <a href="mailto:house.zera.info@gmail.com">house.zera.info@gmail.com</a></p>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<div class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <div class="cart-head">
+    <h2 id="cart-title">Your bag</h2>
+    <button class="cart-close" id="cart-close-btn" aria-label="Close bag">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body"></div>
+  <div class="cart-foot">
+    <div class="cart-total-row">
+      <span>Subtotal</span>
+      <span id="cart-subtotal">$0.00</span>
+    </div>
+    <button class="btn-checkout" id="checkout-btn">Go to checkout</button>
+  </div>
+</div>
+
+<div class="size-overlay" id="size-overlay"></div>
+<div class="size-modal" id="size-modal" role="dialog" aria-modal="true" aria-labelledby="size-modal-title" hidden>
+  <div class="cart-head">
+    <h2 id="size-modal-title">Choose a size</h2>
+    <button class="cart-close" id="size-modal-close" aria-label="Close size picker">✕</button>
+  </div>
+  <div class="size-modal-body">
+    <p class="product-name" id="size-modal-product"></p>
+    <fieldset style="border:none;padding:0;margin:0;">
+      <legend class="sr-only">Available sizes</legend>
+      <div id="size-modal-options"></div>
+    </fieldset>
+    <p class="quiz-error" id="size-modal-error" hidden>Choose a size to continue.</p>
+    <button type="button" class="btn btn-primary" id="size-modal-confirm" style="width:100%;margin-top:1.25rem;">Add to bag</button>
+  </div>
+</div>
+
+<div class="size-overlay" id="bottoms-overlay"></div>
+<div class="size-modal" id="bottoms-size-modal" role="dialog" aria-modal="true" aria-labelledby="bottoms-size-title" hidden>
+  <div class="cart-head">
+    <h2 id="bottoms-size-title">Bottoms sizing</h2>
+    <button class="cart-close" id="bottoms-size-close" aria-label="Close sizing chart">✕</button>
+  </div>
+  <div class="size-modal-body">
+    <p style="margin-bottom:1rem;color:var(--slate);font-size:0.9rem;">Waist and hip measurement ranges, based on Nike's size guide.</p>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.92rem;">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:left;padding:0.6rem 0.75rem;border-bottom:2px solid var(--line-strong);">Size</th>
+            <th scope="col" style="text-align:left;padding:0.6rem 0.75rem;border-bottom:2px solid var(--line-strong);">Waist (in.)</th>
+            <th scope="col" style="text-align:left;padding:0.6rem 0.75rem;border-bottom:2px solid var(--line-strong);">Hip (in.)</th>
+          </tr>
+        </thead>
+        <tbody id="bottoms-size-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== Product passport ===== -->
+<div class="size-overlay" id="passport-overlay"></div>
+<div class="size-modal passport-modal" id="passport-modal" role="dialog" aria-modal="true" aria-labelledby="passport-title" hidden>
+  <div class="cart-head">
+    <h2 id="passport-title">Product passport</h2>
+    <div class="head-actions">
+      <button class="btn-ghost btn-speak" id="passport-speak" aria-label="Read this passport aloud">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="15" height="15"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <span aria-hidden="true">Listen</span>
+      </button>
+      <button class="cart-close" id="passport-close" aria-label="Close product passport">&#10005;</button>
+    </div>
+  </div>
+  <div class="size-modal-body" id="passport-body"></div>
+</div>
+
+<!-- ===== Audio guide ===== -->
+<div class="size-overlay" id="audio-overlay"></div>
+<div class="audio-guide" id="audio-guide" role="dialog" aria-modal="true" aria-labelledby="audio-title" hidden>
+  <div class="cart-head">
+    <h2 id="audio-title">Audio guide</h2>
+    <button class="cart-close" id="audio-close" aria-label="Close audio guide">&#10005;</button>
+  </div>
+
+  <div class="audio-body">
+    <p class="audio-lede">A spoken walkthrough of the shop, read by your device&rsquo;s voice. Every word is in the transcript below, and the transcript highlights as it plays.</p>
+
+    <p class="audio-unsupported" id="audio-unsupported" hidden role="status">
+      Your browser does not expose a speech voice, so the guide cannot be spoken here. The full transcript is below and is complete on its own.
+    </p>
+
+    <div class="audio-now">
+      <p class="audio-chapter-label" id="audio-chapter-label" role="status">Chapter 1 of 5 &middot; Welcome</p>
+      <div class="audio-progress">
+        <div class="audio-progress-fill" id="audio-progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div class="audio-controls" role="group" aria-label="Audio guide playback">
+      <button type="button" class="audio-btn" id="audio-prev" aria-label="Previous chapter">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="20" height="20"><path d="M18 5v14L8 12l10-7zM6 5h2v14H6z" fill="currentColor"/></svg>
+      </button>
+      <button type="button" class="audio-btn audio-btn-main" id="audio-play" aria-label="Play the audio guide">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="24" height="24" id="audio-icon-play"><path d="M7 4.5v15l13-7.5-13-7.5z" fill="currentColor"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="24" height="24" id="audio-icon-pause" hidden><path d="M6.5 4.5h4v15h-4zM13.5 4.5h4v15h-4z" fill="currentColor"/></svg>
+        <span class="audio-btn-text" id="audio-play-text">Play</span>
+      </button>
+      <button type="button" class="audio-btn" id="audio-next" aria-label="Next chapter">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="20" height="20"><path d="M6 5v14l10-7L6 5zm12 0h-2v14h2z" fill="currentColor"/></svg>
+      </button>
+      <button type="button" class="audio-btn" id="audio-stop" aria-label="Stop and return to the start">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="18" height="18"><rect x="5" y="5" width="14" height="14" fill="currentColor"/></svg>
+      </button>
+    </div>
+
+    <div class="audio-speed">
+      <label for="audio-rate">Speed <output id="audio-rate-out">1.0&times;</output></label>
+      <input type="range" id="audio-rate" min="0.5" max="2" step="0.1" value="1">
+    </div>
+
+    <h3 class="audio-h">Transcript</h3>
+    <ol class="audio-transcript" id="audio-transcript"></ol>
+  </div>
+</div>
+
+<!-- ===== Full accessibility panel ===== -->
+<div class="size-overlay" id="a11y-overlay"></div>
+<div class="a11y-panel" id="a11y-panel" role="dialog" aria-modal="true" aria-labelledby="a11y-panel-title" hidden>
+  <div class="cart-head">
+    <h2 id="a11y-panel-title">Accessibility settings</h2>
+    <button class="cart-close" id="a11y-close" aria-label="Close accessibility settings">&#10005;</button>
+  </div>
+  <div class="a11y-panel-body">
+    <p class="a11y-panel-lede">Every setting here is saved to this browser and applies the moment you change it. Nothing is sent anywhere.</p>
+
+    <section class="a11y-section" aria-labelledby="a11y-s-speech">
+      <h3 id="a11y-s-speech">Speech</h3>
+
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-tts">Read aloud on hover and focus</span>
+          <span class="a11y-field-hint">Speaks whatever you point at or tab to. Also adds a Listen button to every piece.</span>
+        </div>
+        <button type="button" class="switch" id="tts-toggle-panel" role="switch" aria-checked="false" aria-labelledby="lbl-tts"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+
+      <div class="a11y-field a11y-field-stack" id="voice-field">
+        <label class="a11y-field-label" for="tts-voice">Voice</label>
+        <select id="tts-voice" class="channel-select"></select>
+      </div>
+
+      <div class="a11y-field a11y-field-stack">
+        <label class="a11y-field-label" for="tts-rate">Speaking rate <output id="tts-rate-out">1.0&times;</output></label>
+        <input type="range" id="tts-rate" min="0.5" max="2" step="0.1" value="1">
+      </div>
+
+      <div class="a11y-field a11y-field-stack">
+        <label class="a11y-field-label" for="tts-pitch">Pitch <output id="tts-pitch-out">1.0</output></label>
+        <input type="range" id="tts-pitch" min="0.5" max="1.6" step="0.1" value="1">
+      </div>
+
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-voicecmd">Voice control</span>
+          <span class="a11y-field-hint">Answer the quiz and move around by speaking. Needs microphone permission; audio never leaves your device.</span>
+        </div>
+        <button type="button" class="switch" id="voice-toggle" role="switch" aria-checked="false" aria-labelledby="lbl-voicecmd"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+
+      <button type="button" class="btn btn-secondary a11y-test" id="tts-test">Test the voice</button>
+    </section>
+
+    <section class="a11y-section" aria-labelledby="a11y-s-sound">
+      <h3 id="a11y-s-sound">Sound</h3>
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-earcons">Sound cues</span>
+          <span class="a11y-field-hint">A short tone when something is added, changed, or rejected — useful if you cannot see the confirmation.</span>
+        </div>
+        <button type="button" class="switch" id="earcon-toggle" role="switch" aria-checked="true" aria-labelledby="lbl-earcons"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">On</span></button>
+      </div>
+      <div class="a11y-field a11y-field-stack">
+        <label class="a11y-field-label" for="earcon-vol">Cue volume <output id="earcon-vol-out">40%</output></label>
+        <input type="range" id="earcon-vol" min="0" max="100" step="5" value="40">
+      </div>
+    </section>
+
+    <section class="a11y-section" aria-labelledby="a11y-s-sight">
+      <h3 id="a11y-s-sight">Seeing</h3>
+
+      <div class="a11y-field a11y-field-stack">
+        <span class="a11y-field-label" id="lbl-theme">Theme</span>
+        <div class="seg" role="radiogroup" aria-labelledby="lbl-theme">
+          <button type="button" role="radio" aria-checked="true" data-theme="light">Light</button>
+          <button type="button" role="radio" aria-checked="false" data-theme="dark">Dark</button>
+          <button type="button" role="radio" aria-checked="false" data-theme="high">High contrast</button>
+        </div>
+      </div>
+
+      <div class="a11y-field a11y-field-stack">
+        <label class="a11y-field-label" for="scale-range">Text size <output id="scale-out">100%</output></label>
+        <input type="range" id="scale-range" min="90" max="200" step="10" value="100">
+      </div>
+
+      <div class="a11y-field a11y-field-stack">
+        <label class="a11y-field-label" for="lh-range">Line spacing <output id="lh-out">1.6</output></label>
+        <input type="range" id="lh-range" min="1.4" max="2.4" step="0.1" value="1.6">
+      </div>
+
+      <div class="a11y-field a11y-field-stack">
+        <label class="a11y-field-label" for="ls-range">Letter spacing <output id="ls-out">0.00em</output></label>
+        <input type="range" id="ls-range" min="0" max="0.16" step="0.01" value="0">
+      </div>
+
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-dys">Dyslexia-friendly font</span>
+          <span class="a11y-field-hint">Switches to OpenDyslexic and opens up word spacing.</span>
+        </div>
+        <button type="button" class="switch" id="dyslexia-toggle" role="switch" aria-checked="false" aria-labelledby="lbl-dys"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-underline">Underline every link</span>
+          <span class="a11y-field-hint">Do not rely on colour alone to mark a link.</span>
+        </div>
+        <button type="button" class="switch" id="underline-toggle" role="switch" aria-checked="false" aria-labelledby="lbl-underline"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-focus">Bold focus ring</span>
+          <span class="a11y-field-hint">Thickens the keyboard focus outline to 4&nbsp;px in a high-visibility colour.</span>
+        </div>
+        <button type="button" class="switch" id="focus-toggle" role="switch" aria-checked="false" aria-labelledby="lbl-focus"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-ruler">Reading ruler</span>
+          <span class="a11y-field-hint">A band that follows your pointer and dims everything above and below it.</span>
+        </div>
+        <button type="button" class="switch" id="ruler-toggle" role="switch" aria-checked="false" aria-labelledby="lbl-ruler"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+    </section>
+
+    <section class="a11y-section" aria-labelledby="a11y-s-motion">
+      <h3 id="a11y-s-motion">Movement</h3>
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-motion">Reduce motion</span>
+          <span class="a11y-field-hint">Removes fades, slides and smooth scrolling. Set automatically if your system asks for it.</span>
+        </div>
+        <button type="button" class="switch" id="motion-toggle" role="switch" aria-checked="false" aria-labelledby="lbl-motion"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+      <div class="a11y-field">
+        <div class="a11y-field-text">
+          <span class="a11y-field-label" id="lbl-targets">Large touch targets</span>
+          <span class="a11y-field-hint">Grows every button and control to at least 48&nbsp;px, with more space between them.</span>
+        </div>
+        <button type="button" class="switch" id="targets-toggle" role="switch" aria-checked="false" aria-labelledby="lbl-targets"><span class="switch-track"><span class="switch-thumb"></span></span><span class="switch-text">Off</span></button>
+      </div>
+    </section>
+
+    <div class="a11y-panel-foot">
+      <button type="button" class="btn btn-secondary" id="shortcuts-open" aria-haspopup="dialog" aria-controls="shortcuts-dialog">Keyboard shortcuts</button>
+      <button type="button" class="btn btn-secondary" id="a11y-reset">Reset everything</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Keyboard shortcuts ===== -->
+<div class="size-overlay" id="shortcuts-overlay"></div>
+<div class="size-modal" id="shortcuts-dialog" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title" hidden>
+  <div class="cart-head">
+    <h2 id="shortcuts-title">Keyboard shortcuts</h2>
+    <button class="cart-close" id="shortcuts-close" aria-label="Close keyboard shortcuts">&#10005;</button>
+  </div>
+  <div class="size-modal-body">
+    <p class="pp-note">Shortcuts are ignored while you are typing in a field.</p>
+    <dl class="pp-dl shortcut-list">
+      <div class="pp-row"><dt><kbd>?</kbd></dt><dd>Open this list</dd></div>
+      <div class="pp-row"><dt><kbd>A</kbd></dt><dd>Open accessibility settings</dd></div>
+      <div class="pp-row"><dt><kbd>R</kbd></dt><dd>Turn read aloud on or off</dd></div>
+      <div class="pp-row"><dt><kbd>S</kbd></dt><dd>Stop speaking</dd></div>
+      <div class="pp-row"><dt><kbd>G</kbd></dt><dd>Open the audio guide</dd></div>
+      <div class="pp-row"><dt><kbd>B</kbd></dt><dd>Open your bag</dd></div>
+      <div class="pp-row"><dt><kbd>C</kbd></dt><dd>Cycle theme: light, dark, high contrast</dd></div>
+      <div class="pp-row"><dt><kbd>+</kbd> / <kbd>&#8722;</kbd></dt><dd>Text size up or down</dd></div>
+      <div class="pp-row"><dt><kbd>0</kbd></dt><dd>Reset text size</dd></div>
+      <div class="pp-row"><dt><kbd>Esc</kbd></dt><dd>Close whatever is open, and stop speaking</dd></div>
+    </dl>
+  </div>
+</div>
+
+<div class="reading-ruler" id="reading-ruler" aria-hidden="true" hidden></div>
+<div class="voice-hud" id="voice-hud" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/plates.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/a11y.js"></script>
+</body>
+</html>

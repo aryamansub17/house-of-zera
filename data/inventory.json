@@ -1,0 +1,1002 @@
+{
+  "$schema": "./schema/inventory.schema.json",
+  "version": "1.0.0",
+  "updated": "2026-09-03",
+  "provenance_status": "prototype",
+  "provenance_note": "Item records are prototype data. Names, prices and photographs come from House of Zera's own sourcing; the `sourcing.channel` on each item points at a real, researched EU reuse channel in sources.json to demonstrate how the routing and passport fields work end to end. It is not a record of a completed purchase from that supplier. Items whose channel is `local-thrift` are the ones sourced today.",
+  "items": [
+    {
+      "id": "p1",
+      "name": "Fringe sequin top",
+      "style": "party",
+      "types": [
+        "tops"
+      ],
+      "audience": "women",
+      "materials": [
+        "polyester"
+      ],
+      "embellishments": [
+        "fringe",
+        "patterns"
+      ],
+      "size": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 58,
+      "tag": "One of one",
+      "alt": "Catalogue plate for the fringe sequin top: the garment silhouette filled with a photograph of sequins macro, in jet black.",
+      "description": "A hand-picked party top with an all-over sequin body and long fringe at the hem. Pulls on over the head with no fastenings, so it needs no fine motor control to wear.",
+      "sourcing": {
+        "channel": "local-thrift",
+        "regulation": null,
+        "provenance": "Hand-sourced in Austin, Texas and mended before listing.",
+        "condition": "Very good. Two sequins replaced by hand at the left shoulder."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Polyester",
+            "percent": 100
+          }
+        ],
+        "origin": "Unknown — pre-owned, original label removed",
+        "care": "Hand wash cold, dry flat, do not iron sequins",
+        "recyclability": "Mono-material polyester body; sequins must be removed before fibre recycling",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "none",
+        "pull_on": true,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "No zips, buttons or hooks. Sequin face is textured and may be uncomfortable against sensitive skin; the lining is smooth."
+      },
+      "plate": {
+        "silhouette": "tank",
+        "texture": "sequin"
+      },
+      "colour": {
+        "name": "Jet black",
+        "hex": "#1C1B1E"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p1.jpg",
+        "title": "sequins macro",
+        "creator": "Muffet",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/53133240@N00/386599515"
+      }
+    },
+    {
+      "id": "p2",
+      "name": "Cream crochet patchwork top",
+      "style": "casual",
+      "types": [
+        "tops"
+      ],
+      "audience": "unisex",
+      "materials": [
+        "organic cotton",
+        "acrylic"
+      ],
+      "embellishments": [
+        "patterns",
+        "ruffles",
+        "tags"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 46,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the cream crochet patchwork top: the garment silhouette filled with a photograph of crocheted blanket from the auction, in raw cream.",
+      "description": "Squares of salvaged crochet joined into a loose, forgiving top. Open weave, no lining, and a wide neck opening.",
+      "sourcing": {
+        "channel": "modare-caritas",
+        "regulation": "wfd-textile-epr",
+        "provenance": "Reuse-grade cotton knitwear from a social-enterprise sorting stream, cut down and rejoined into patchwork.",
+        "condition": "Restyled from three donor garments. All joins reinforced."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Organic cotton",
+            "percent": 70
+          },
+          {
+            "fibre": "Acrylic",
+            "percent": 30
+          }
+        ],
+        "origin": "Post-consumer, collected in Spain",
+        "care": "Hand wash cold, reshape and dry flat",
+        "recyclability": "Blended cotton-acrylic; mechanically recyclable, not suitable for chemical cotton recycling",
+        "reuse_cycle": 3
+      },
+      "accessibility": {
+        "closures": "none",
+        "pull_on": true,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Wide neck opening clears a head without stretching. Open crochet catches on rings and splints — a smooth base layer helps."
+      },
+      "plate": {
+        "silhouette": "tee",
+        "texture": "crochet"
+      },
+      "colour": {
+        "name": "Raw cream",
+        "hex": "#E6DCC8"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p2.jpg",
+        "title": "crocheted blanket from the auction",
+        "creator": "emmajanehw",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/17416832@N00/263497743"
+      }
+    },
+    {
+      "id": "p3",
+      "name": "Gold panel jacket",
+      "style": "party",
+      "types": [
+        "jackets"
+      ],
+      "audience": "women",
+      "materials": [
+        "polyester"
+      ],
+      "embellishments": [
+        "buttons",
+        "patterns"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "price": 88,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the gold panel jacket: the garment silhouette filled with a photograph of gold texture, in antique gold.",
+      "description": "A statement jacket rebuilt with vertical gold panels. Front closes with four large buttons that are easy to grip.",
+      "sourcing": {
+        "channel": "unfrosen",
+        "regulation": "espr-unsold-ban",
+        "provenance": "Never-worn unsold stock diverted under the EU destruction ban, then re-panelled.",
+        "condition": "Deadstock, never worn. Original buttons swapped for larger, easier-to-grip ones."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Polyester",
+            "percent": 100
+          }
+        ],
+        "origin": "Unsold EU retail stock, held in Romania",
+        "care": "Spot clean or dry clean",
+        "recyclability": "Mono-material polyester; buttons are removable for separate recycling",
+        "reuse_cycle": 1
+      },
+      "accessibility": {
+        "closures": "large buttons",
+        "pull_on": false,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Buttons are 30 mm and set in loose buttonholes — chosen to be workable one-handed or with limited grip strength."
+      },
+      "plate": {
+        "silhouette": "jacket",
+        "texture": "panel"
+      },
+      "colour": {
+        "name": "Antique gold",
+        "hex": "#B08A3E"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p3.jpg",
+        "title": "GOLD TEXTURE",
+        "creator": "geishaboy500",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/49503154413@N01/7241676508"
+      }
+    },
+    {
+      "id": "p4",
+      "name": "Tweed business shorts",
+      "style": "business",
+      "types": [
+        "bottoms"
+      ],
+      "audience": "women",
+      "materials": [
+        "wool"
+      ],
+      "embellishments": [
+        "buttons",
+        "inelastic-waistband"
+      ],
+      "size": [
+        "30",
+        "32",
+        "34"
+      ],
+      "price": 34,
+      "tag": "One of one",
+      "alt": "Catalogue plate for the tweed business shorts: the garment silhouette filled with a photograph of tweed fabric clothing, in oat tweed.",
+      "description": "Tailored wool tweed shorts with a flat front and a fixed waistband. Cut for a seated silhouette rather than a standing one.",
+      "sourcing": {
+        "channel": "local-thrift",
+        "regulation": null,
+        "provenance": "Hand-sourced in Austin, Texas; hem and waistband re-set.",
+        "condition": "Good. Waistband reinforced, hem re-set by hand."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Wool",
+            "percent": 100
+          }
+        ],
+        "origin": "Unknown — pre-owned",
+        "care": "Dry clean, or hand wash cold with wool detergent",
+        "recyclability": "Mono-material wool; suitable for mechanical wool recycling once buttons are removed",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "button and fly",
+        "pull_on": false,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Waistband is inelastic and sits high at the back, which suits wheelchair seating. The fly needs two hands."
+      },
+      "plate": {
+        "silhouette": "shorts",
+        "texture": "tweed"
+      },
+      "colour": {
+        "name": "Oat tweed",
+        "hex": "#C6B79B"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p4.jpg",
+        "title": "Tweed Fabric Clothing",
+        "creator": null,
+        "license": "CC0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "source": "rawpixel",
+        "source_url": "https://www.rawpixel.com/image/5966484/tweed-fabric-clothing"
+      }
+    },
+    {
+      "id": "p5",
+      "name": "Black fringe two-piece set",
+      "style": "party",
+      "types": [
+        "two-piece sets"
+      ],
+      "audience": "women",
+      "materials": [
+        "polyester"
+      ],
+      "embellishments": [
+        "fringe"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "price": 64,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the black fringe two-piece set: the garment silhouette filled with a photograph of textile texture 7—black cotton, in jet black.",
+      "description": "A two-piece set in tiered black fringe. Both pieces pull on, and the skirt has a wide elastic waist.",
+      "sourcing": {
+        "channel": "texaid",
+        "regulation": "wfd-textile-epr",
+        "provenance": "A-grade rewearable eveningwear from a European sorting stream, restyled into a matched set.",
+        "condition": "Restyled from two donor pieces. Fringe re-anchored throughout."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Polyester",
+            "percent": 100
+          }
+        ],
+        "origin": "Post-consumer, collected in Central Europe",
+        "care": "Hand wash cold, hang to dry, do not tumble",
+        "recyclability": "Mono-material polyester; fringe strands shed and should be captured in a wash bag",
+        "reuse_cycle": 3
+      },
+      "accessibility": {
+        "closures": "elastic waist",
+        "pull_on": true,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "No fastenings on either piece. Wide elastic waist can be pulled on seated."
+      },
+      "plate": {
+        "silhouette": "set",
+        "texture": "fringe"
+      },
+      "colour": {
+        "name": "Jet black",
+        "hex": "#211F22"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p5.jpg",
+        "title": "Textile texture 7—black cotton",
+        "creator": "FreePX",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/48184699@N04/4557666198"
+      }
+    },
+    {
+      "id": "p6",
+      "name": "Sequin party tank",
+      "style": "party",
+      "types": [
+        "tops"
+      ],
+      "audience": "women",
+      "materials": [
+        "polyester"
+      ],
+      "embellishments": [
+        "patterns"
+      ],
+      "size": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 38,
+      "tag": "One of one",
+      "alt": "Catalogue plate for the sequin party tank: the garment silhouette filled with a photograph of silver sequins on lace, in gunmetal.",
+      "description": "A simple sequin tank with wide straps and a straight hem. Straps are wide enough to cover a bra or a port site.",
+      "sourcing": {
+        "channel": "local-thrift",
+        "regulation": null,
+        "provenance": "Hand-sourced in Austin, Texas; straps widened.",
+        "condition": "Very good. Straps widened from spaghetti to 4 cm."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Polyester",
+            "percent": 100
+          }
+        ],
+        "origin": "Unknown — pre-owned",
+        "care": "Hand wash cold, dry flat",
+        "recyclability": "Mono-material polyester; sequins must be removed before fibre recycling",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "none",
+        "pull_on": true,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Pulls on over the head. Wide straps stay put without adjusting."
+      },
+      "plate": {
+        "silhouette": "tank",
+        "texture": "sequin"
+      },
+      "colour": {
+        "name": "Gunmetal",
+        "hex": "#4A4750"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p6.jpg",
+        "title": "Silver Sequins on Lace",
+        "creator": "shaire productions",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/9822107@N08/5204797042"
+      }
+    },
+    {
+      "id": "p7",
+      "name": "Wool overcoat",
+      "style": "business",
+      "types": [
+        "jackets"
+      ],
+      "audience": "men",
+      "materials": [
+        "wool"
+      ],
+      "embellishments": [
+        "buttons"
+      ],
+      "size": [
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "XXXL"
+      ],
+      "price": 96,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the wool overcoat: the garment silhouette filled with a photograph of wool texture 3, in charcoal wool.",
+      "description": "A single-breasted wool overcoat, relined and rebuttoned. Cut long, with a back vent that opens when seated.",
+      "sourcing": {
+        "channel": "boer-group",
+        "regulation": "wfd-textile-epr",
+        "provenance": "Reuse-grade wool outerwear from a Dutch sorting stream, relined and rebuttoned.",
+        "condition": "Good. New lining, all buttons replaced with magnetic-backed alternatives."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Wool",
+            "percent": 80
+          },
+          {
+            "fibre": "Polyester",
+            "percent": 20
+          }
+        ],
+        "origin": "Post-consumer, collected in the Netherlands",
+        "care": "Dry clean only",
+        "recyclability": "Wool-polyester blend; shell is mechanically recyclable once lining is separated",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "magnetic buttons",
+        "pull_on": false,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Front buttons look conventional but close magnetically — they can be fastened one-handed. Back vent prevents bunching when seated. Not suitable near an implanted cardiac device."
+      },
+      "plate": {
+        "silhouette": "coat",
+        "texture": "plain"
+      },
+      "colour": {
+        "name": "Charcoal wool",
+        "hex": "#3A3B3D"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p7.jpg",
+        "title": "wool texture 3",
+        "creator": "Andrew Kelsall, Graphic Designer",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/44664865@N07/4442891863"
+      }
+    },
+    {
+      "id": "p8",
+      "name": "Reworked wide-leg denim",
+      "style": "casual",
+      "types": [
+        "bottoms"
+      ],
+      "audience": "unisex",
+      "materials": [
+        "organic cotton"
+      ],
+      "embellishments": [
+        "patterns",
+        "inelastic-waistband"
+      ],
+      "size": [
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "price": 52,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the reworked wide-leg denim: the garment silhouette filled with a photograph of denim texture 14, in indigo denim.",
+      "description": "Wide-leg denim pieced from two donor pairs, with a contrast panel down each outer leg and a side-zip opening.",
+      "sourcing": {
+        "channel": "wtorpol",
+        "regulation": "wfd-textile-epr",
+        "provenance": "Reuse-grade denim from a Polish sorting stream, cut and rejoined into a wide-leg block.",
+        "condition": "Restyled from two donor pairs. Side seams reinforced with flat-felled construction."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Organic cotton",
+            "percent": 98
+          },
+          {
+            "fibre": "Elastane",
+            "percent": 2
+          }
+        ],
+        "origin": "Post-consumer, collected in Poland",
+        "care": "Machine wash cold, inside out, hang to dry",
+        "recyclability": "Near mono-material cotton; elastane content is low enough for mechanical recycling",
+        "reuse_cycle": 3
+      },
+      "accessibility": {
+        "closures": "side zip with pull ring",
+        "pull_on": false,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Zip runs down the side seam rather than the front and ends in a 25 mm pull ring, so it can be worked with one hand or a dressing hook."
+      },
+      "plate": {
+        "silhouette": "trouser",
+        "texture": "patch"
+      },
+      "colour": {
+        "name": "Indigo denim",
+        "hex": "#3C4F6B"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p8.jpg",
+        "title": "Denim Texture 14",
+        "creator": "SixRevisions",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/31288116@N02/3319695977"
+      }
+    },
+    {
+      "id": "p9",
+      "name": "Organic cotton wrap dress",
+      "style": "casual",
+      "types": [
+        "dresses"
+      ],
+      "audience": "women",
+      "materials": [
+        "organic cotton"
+      ],
+      "embellishments": [
+        "ruffles",
+        "tags"
+      ],
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "price": 62,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the organic cotton wrap dress: the garment silhouette filled with a photograph of cream linen, in undyed cotton.",
+      "description": "A wrap dress in soft organic cotton that ties at the waist. The wrap opening means it can be put on without lifting the arms overhead.",
+      "sourcing": {
+        "channel": "recovo",
+        "regulation": "espr-unsold-ban",
+        "provenance": "Cut from deadstock organic cotton jersey diverted from disposal under the EU destruction ban.",
+        "condition": "New, made from deadstock fabric."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Organic cotton",
+            "percent": 100
+          }
+        ],
+        "origin": "Deadstock roll, held in Spain",
+        "care": "Machine wash warm, tumble dry low",
+        "recyclability": "Mono-material organic cotton; suitable for chemical and mechanical recycling",
+        "reuse_cycle": 1
+      },
+      "accessibility": {
+        "closures": "wrap and tie",
+        "pull_on": false,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Opens fully flat, so it can be dressed lying down or seated with assistance. The tie can be swapped for a hook fastening on request."
+      },
+      "plate": {
+        "silhouette": "dress",
+        "texture": "plain"
+      },
+      "colour": {
+        "name": "Undyed cotton",
+        "hex": "#DCCFB8"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p9.jpg",
+        "title": "Cream Linen",
+        "creator": "TinaSea",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/40519602@N02/3833609267"
+      }
+    },
+    {
+      "id": "p10",
+      "name": "Kids graphic tee, deadstock cotton",
+      "style": "casual",
+      "types": [
+        "tops"
+      ],
+      "audience": "kids",
+      "materials": [
+        "organic cotton"
+      ],
+      "embellishments": [
+        "patterns"
+      ],
+      "size": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 22,
+      "tag": "Deadstock",
+      "alt": "Catalogue plate for the kids graphic tee, deadstock cotton: the garment silhouette filled with a photograph of linen texture, in bone jersey.",
+      "description": "A soft cotton kids tee printed with a simple line drawing. Flat seams and a printed neck label instead of a sewn-in tag.",
+      "sourcing": {
+        "channel": "wasted-fabrics",
+        "regulation": "espr-unsold-ban",
+        "provenance": "Cut from designer deadstock jersey sold in small cuts, diverted from disposal.",
+        "condition": "New, made from deadstock fabric."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Organic cotton",
+            "percent": 100
+          }
+        ],
+        "origin": "Deadstock designer roll, held in the EU",
+        "care": "Machine wash warm, tumble dry low",
+        "recyclability": "Mono-material organic cotton; print area is water-based and does not block recycling",
+        "reuse_cycle": 1
+      },
+      "accessibility": {
+        "closures": "none",
+        "pull_on": true,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Flat-locked seams and a printed neck label — made this way for children with tactile sensitivity."
+      },
+      "plate": {
+        "silhouette": "tee",
+        "texture": "print"
+      },
+      "colour": {
+        "name": "Bone jersey",
+        "hex": "#E3DACB"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p10.jpg",
+        "title": "Linen Texture",
+        "creator": "shaire productions",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/9822107@N08/7076822885"
+      }
+    },
+    {
+      "id": "p11",
+      "name": "Performance leggings",
+      "style": "athletic",
+      "types": [
+        "bottoms"
+      ],
+      "audience": "unisex",
+      "materials": [
+        "polyester",
+        "nylon"
+      ],
+      "embellishments": [
+        "patterns"
+      ],
+      "size": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38",
+        "40"
+      ],
+      "price": 40,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the performance leggings: the garment silhouette filled with a photograph of african textile pattern, in slate.",
+      "description": "Stretch leggings with a wide flat waistband and a geometric print. Full stretch in both directions, so they pull on easily.",
+      "sourcing": {
+        "channel": "soex-ico",
+        "regulation": "wfd-textile-epr",
+        "provenance": "Rewearable activewear from a retailer take-back stream, re-waistbanded.",
+        "condition": "Good. New wide waistband fitted; original drawcord removed."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Polyester",
+            "percent": 72
+          },
+          {
+            "fibre": "Nylon",
+            "percent": 20
+          },
+          {
+            "fibre": "Elastane",
+            "percent": 8
+          }
+        ],
+        "origin": "Post-consumer take-back, collected in Germany",
+        "care": "Machine wash cold in a filter bag, hang to dry",
+        "recyclability": "Multi-fibre synthetic blend; currently downcyclable only. Wash in a microfibre bag.",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "none",
+        "pull_on": true,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "No drawcord to tie. Four-way stretch and a wide flat waistband that does not dig in when seated for long periods."
+      },
+      "plate": {
+        "silhouette": "legging",
+        "texture": "print"
+      },
+      "colour": {
+        "name": "Slate",
+        "hex": "#42474E"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p11.jpg",
+        "title": "African Textile Pattern",
+        "creator": "shaire productions",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/9822107@N08/4080593545"
+      }
+    },
+    {
+      "id": "p12",
+      "name": "Silk cami and short set",
+      "style": "party",
+      "types": [
+        "two-piece sets",
+        "intimates"
+      ],
+      "audience": "women",
+      "materials": [
+        "silks"
+      ],
+      "embellishments": [
+        "mesh",
+        "ruffles"
+      ],
+      "size": [
+        "XS",
+        "S",
+        "M"
+      ],
+      "price": 58,
+      "tag": "One of one",
+      "alt": "Catalogue plate for the silk cami and short set: the garment silhouette filled with a photograph of designm.ag fabric texture - 7, in champagne silk.",
+      "description": "A silk cami and short set with mesh trim. Both pieces pull on, and the silk is smooth against skin throughout.",
+      "sourcing": {
+        "channel": "local-thrift",
+        "regulation": null,
+        "provenance": "Hand-sourced in Austin, Texas; mesh trim replaced.",
+        "condition": "Very good. Mesh trim replaced at both hems."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Silk",
+            "percent": 100
+          }
+        ],
+        "origin": "Unknown — pre-owned",
+        "care": "Hand wash cold with silk detergent, dry flat away from sun",
+        "recyclability": "Mono-material silk; biodegradable, suitable for mechanical recycling",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "none",
+        "pull_on": true,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "No fastenings and no interior seams against the skin. Often chosen by people with sensory sensitivity or chronic pain."
+      },
+      "plate": {
+        "silhouette": "set",
+        "texture": "mesh"
+      },
+      "colour": {
+        "name": "Champagne silk",
+        "hex": "#D8C3A5"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p12.jpg",
+        "title": "DesignM.ag Fabric Texture - 7",
+        "creator": "designm.ag",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/36281782@N03/3703785107"
+      }
+    },
+    {
+      "id": "p13",
+      "name": "Mesh panel athletic jacket",
+      "style": "athletic",
+      "types": [
+        "jackets"
+      ],
+      "audience": "men",
+      "materials": [
+        "polyester",
+        "nylon"
+      ],
+      "embellishments": [
+        "mesh"
+      ],
+      "size": [
+        "M",
+        "L",
+        "XL",
+        "XXL",
+        "XXXL"
+      ],
+      "price": 70,
+      "tag": "Restyled",
+      "alt": "Catalogue plate for the mesh panel athletic jacket: the garment silhouette filled with a photograph of mesh, in deep olive.",
+      "description": "A light athletic jacket with mesh side panels for airflow and a full-length front zip with an oversized pull.",
+      "sourcing": {
+        "channel": "jmp-wilcox",
+        "regulation": "wfd-textile-epr",
+        "provenance": "Reuse-grade sportswear from a UK sorting stream, with mesh panels inset.",
+        "condition": "Good. Mesh panels inset at both sides; zip pull enlarged."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Polyester",
+            "percent": 85
+          },
+          {
+            "fibre": "Nylon",
+            "percent": 15
+          }
+        ],
+        "origin": "Post-consumer, collected in the United Kingdom",
+        "care": "Machine wash cold in a filter bag, hang to dry",
+        "recyclability": "Polyester-nylon blend; separable at panel seams for mono-material recycling",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "full zip with oversized pull",
+        "pull_on": false,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Zip has a 40 mm loop pull and a bottom stop that stays joined, so the zip can be started one-handed."
+      },
+      "plate": {
+        "silhouette": "jacket",
+        "texture": "mesh"
+      },
+      "colour": {
+        "name": "Deep olive",
+        "hex": "#454B3C"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p13.jpg",
+        "title": "Mesh",
+        "creator": "Sam Schmidt.",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/66740448@N04/6095356189"
+      }
+    },
+    {
+      "id": "p14",
+      "name": "Silk button blouse",
+      "style": "business",
+      "types": [
+        "tops"
+      ],
+      "audience": "women",
+      "materials": [
+        "silks"
+      ],
+      "embellishments": [
+        "buttons"
+      ],
+      "size": [
+        "XS",
+        "S",
+        "M",
+        "L"
+      ],
+      "price": 54,
+      "tag": "One of one",
+      "alt": "Catalogue plate for the silk button blouse: the garment silhouette filled with a photograph of silk fabric, in ivory silk.",
+      "description": "A silk blouse with a soft collar and a button front. Buttons are larger than standard and set in loose buttonholes.",
+      "sourcing": {
+        "channel": "local-thrift",
+        "regulation": null,
+        "provenance": "Hand-sourced in Austin, Texas; buttons and buttonholes reworked.",
+        "condition": "Very good. Buttons enlarged and buttonholes eased."
+      },
+      "passport": {
+        "composition": [
+          {
+            "fibre": "Silk",
+            "percent": 100
+          }
+        ],
+        "origin": "Unknown — pre-owned",
+        "care": "Hand wash cold with silk detergent, iron on low from the reverse",
+        "recyclability": "Mono-material silk; biodegradable once buttons are removed",
+        "reuse_cycle": 2
+      },
+      "accessibility": {
+        "closures": "large buttons",
+        "pull_on": false,
+        "seated_friendly": true,
+        "tagless": true,
+        "notes": "Buttons are 20 mm with eased buttonholes. Can be worn open over a pull-on layer if buttoning is not an option."
+      },
+      "plate": {
+        "silhouette": "blouse",
+        "texture": "button"
+      },
+      "colour": {
+        "name": "Ivory silk",
+        "hex": "#E9E1D2"
+      },
+      "photo": null,
+      "fabric": {
+        "file": "assets/img/fabric/p14.jpg",
+        "title": "Silk fabric",
+        "creator": "northofsweden",
+        "license": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "source_url": "https://www.flickr.com/photos/48036462@N00/305827183"
+      }
+    }
+  ],
+  "image_policy": "Each piece is shown as its silhouette filled with a photograph of the actual textile. The fabric photographs are real, openly licensed images sourced through Openverse (Flickr, Rawpixel, Art Institute of Chicago) under CC BY, CC BY-SA or CC0, and each item's `fabric` block carries the title, creator, licence and a link back to the source. Whole-garment photography without models does not exist at catalogue scale under an open licence, and repeating one stock photo across unrelated one-of-one pieces would misrepresent them, so the silhouette is drawn from the item's own `plate` and `colour` fields while the surface is real cloth. Set an item's `photo` to a file path to use a straight photograph instead."
+}

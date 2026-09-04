@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sourcing database — Inclusively Zera</title>
+<meta name="description" content="The EU circularity law and the reuse channels behind every piece in the Inclusively Zera prototype, with citations.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/a11y.css">
+<style>
+  .doc { max-width: 62rem; margin-inline: auto; padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .doc-head { border-bottom: 2px solid var(--ink); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
+  .doc h1 {
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 20, 'WONK' 1;
+    margin-bottom: 0.75rem;
+  }
+  .doc .lede { font-size: 1.0625rem; color: var(--ink-2); max-width: 60ch; }
+  .doc h2 {
+    font-size: clamp(1.5rem, 3vw, 2.125rem);
+    font-weight: 300;
+    font-variation-settings: 'SOFT' 20, 'WONK' 1;
+    margin: 3rem 0 0.5rem;
+  }
+  .doc h3 { font-size: 1.1875rem; font-weight: 400; margin-bottom: 0.4rem; }
+  .doc p { max-width: 74ch; color: var(--ink-2); }
+  .doc p + p { margin-top: 0.75rem; }
+
+  .note {
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0 0;
+    border-left: 3px solid var(--sienna);
+    background: var(--paper-raised);
+    font-size: 0.9375rem;
+  }
+
+  .law { border-top: var(--rule-w) solid var(--hair); padding: 1.75rem 0; }
+  .law-meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--slate);
+  }
+  .law-meta b { color: var(--sienna); font-weight: 600; }
+
+  .chan { border-collapse: collapse; width: 100%; margin-top: 1rem; font-size: 0.9375rem; }
+  .chan th, .chan td {
+    text-align: left; padding: 0.7rem 0.75rem 0.7rem 0;
+    border-bottom: var(--rule-w) solid var(--hair); vertical-align: top;
+  }
+  .chan th {
+    font-size: 0.6875rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--slate); border-bottom-color: var(--ink);
+  }
+  .chan td:first-child { font-weight: 600; white-space: nowrap; }
+  .chan .cc { font-family: var(--font-mono); font-size: 0.75rem; color: var(--slate); }
+  .chan .nt { color: var(--ink-2); font-size: 0.875rem; }
+  @media (max-width: 700px) {
+    .chan, .chan tbody, .chan tr, .chan td { display: block; width: 100%; }
+    .chan thead { display: none; }
+    .chan tr { border-bottom: var(--rule-w) solid var(--ink); padding: 0.75rem 0; }
+    .chan td { border: 0; padding: 0.15rem 0; }
+  }
+
+  .credits { margin-top: 1rem; font-size: 0.9375rem; }
+  .credits li {
+    padding: 0.6rem 0;
+    border-bottom: var(--rule-w) solid var(--hair);
+    color: var(--ink-2);
+  }
+  .credits b { color: var(--ink); font-weight: 600; }
+
+  .back {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    text-decoration: none; margin-bottom: 2rem;
+  }
+  .back::before { content: "\2190"; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#doc">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <div class="logo-block">
+      <a class="logo" href="../index.html">Inclusively <em>Zera</em></a>
+      <p class="logo-subtitle">by House of Zera</p>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#story">Our story</a>
+      <a href="accessibility.html">Accessibility</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap doc" id="doc">
+  <a class="back" href="../index.html">Back to the shop</a>
+
+  <div class="doc-head">
+    <h1>The sourcing database</h1>
+    <p class="lede">
+      Every piece in this shop is attributed to a reuse channel, and every channel exists because
+      of a specific piece of EU circularity law. This page is generated directly from
+      <code>data/sources.json</code>, so it cannot drift from what the shop actually uses.
+    </p>
+  </div>
+
+  <p class="note" id="disclaimer"></p>
+
+  <h2>The law that creates the supply</h2>
+  <div id="laws"></div>
+
+  <h2>Reuse channels</h2>
+  <p>
+    These are real, publicly documented actors in the EU textile reuse and deadstock supply chain.
+    Listing one here records it as a researched sourcing route — it is not a claim of an existing
+    commercial partnership.
+  </p>
+  <table class="chan">
+    <caption class="sr-only">Researched EU textile reuse channels, with country, type and status</caption>
+    <thead>
+      <tr>
+        <th scope="col">Channel</th>
+        <th scope="col">Country</th>
+        <th scope="col">Type</th>
+        <th scope="col">Status</th>
+        <th scope="col">Notes</th>
+      </tr>
+    </thead>
+    <tbody id="channels"></tbody>
+  </table>
+
+  <h2>Image credits</h2>
+  <p id="image-policy"></p>
+  <ul class="credits" id="credits"></ul>
+
+  <h2>A note on what is real here</h2>
+  <p>
+    The regulations, the citations and the channel organisations are real and verifiable — follow
+    any link above. The catalogue itself is prototype data: names, prices and passport fields were
+    written for this build, and each item's channel attribution demonstrates how routing and
+    provenance flow through the system rather than recording a completed purchase. Items attributed
+    to <b>Local thrift and estate sourcing</b> are the ones House of Zera sources today.
+  </p>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <p>© 2026 Inclusively Zera. Built for everyone, on purpose.</p>
+    <p><a href="accessibility.html">How this site was built to be accessible</a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function host(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ''); }
+    catch (e) { return url; }
+  }
+
+  Promise.all([
+    fetch('../data/sources.json').then(function (r) { return r.json(); }),
+    fetch('../data/inventory.json').then(function (r) { return r.json(); })
+  ]).then(function (res) {
+    var src = res[0], inv = res[1];
+
+    document.getElementById('disclaimer').textContent = src.disclaimer;
+    document.getElementById('image-policy').textContent = inv.image_policy || '';
+
+    document.getElementById('laws').innerHTML = src.regulations.map(function (r) {
+      var when = r.in_application_since
+        ? 'In application since ' + r.in_application_since
+        : r.in_force_since ? 'In force since ' + r.in_force_since
+        : r.expected ? 'Expected ' + r.expected : '';
+      return '<article class="law">' +
+        '<h3>' + esc(r.short) + '</h3>' +
+        '<div class="law-meta">' +
+          '<span>' + esc(r.instrument) + '</span>' +
+          (when ? '<b>' + esc(when) + '</b>' : '') +
+          (r.member_state_deadline ? '<span>Member states by ' + esc(r.member_state_deadline) + '</span>' : '') +
+        '</div>' +
+        '<p>' + esc(r.summary) + '</p>' +
+        (r.why_it_creates_supply ? '<p><b>Why it creates supply.</b> ' + esc(r.why_it_creates_supply) + '</p>' : '') +
+        (r.why_it_matters_here ? '<p><b>Why it matters here.</b> ' + esc(r.why_it_matters_here) + '</p>' : '') +
+        (r.scale ? '<p><b>Scale.</b> ' + esc(r.scale) + '</p>' : '') +
+        '<p>' + r.sources.map(function (u) {
+          return '<a href="' + esc(u) + '" rel="noopener">' + esc(host(u)) + '</a>';
+        }).join(' &middot; ') + '</p>' +
+      '</article>';
+    }).join('');
+
+    var used = {};
+    inv.items.forEach(function (i) { if (i.sourcing) used[i.sourcing.channel] = (used[i.sourcing.channel] || 0) + 1; });
+
+    document.getElementById('channels').innerHTML = src.channels.map(function (c) {
+      var n = used[c.id] || 0;
+      return '<tr>' +
+        '<td>' + esc(c.name) + (n ? ' <span class="cc">' + n + ' piece' + (n === 1 ? '' : 's') + '</span>' : '') + '</td>' +
+        '<td class="cc">' + esc(c.country) + '</td>' +
+        '<td class="cc">' + esc(String(c.type).replace(/-/g, ' ')) + '</td>' +
+        '<td class="cc">' + esc(c.status) + '</td>' +
+        '<td class="nt">' + esc(c.note || '') +
+          (c.source ? ' <a href="' + esc(c.source) + '" rel="noopener">source</a>' : '') + '</td>' +
+      '</tr>';
+    }).join('');
+
+    // One credit line per distinct photograph, as CC BY and BY-SA require.
+    var byFile = {};
+    inv.items.forEach(function (i) { if (i.fabric) byFile[i.fabric.file] = i.fabric; });
+    document.getElementById('credits').innerHTML = Object.keys(byFile).map(function (k) {
+      var f = byFile[k];
+      return '<li><b><a href="' + esc(f.source_url) + '" rel="noopener nofollow">' + esc(f.title) + '</a></b>' +
+        (f.creator ? ' by ' + esc(f.creator) : '') +
+        ', via ' + esc(f.source) + ', licensed ' +
+        '<a href="' + esc(f.license_url) + '" rel="noopener nofollow license">' + esc(f.license) + '</a>.</li>';
+    }).join('') +
+    '<li>Brand photography (hero, team) © House of Zera, all rights reserved.</li>';
+  }).catch(function (err) {
+    document.getElementById('doc').insertAdjacentHTML('beforeend',
+      '<p class="note" role="alert">The database could not be loaded (' + esc(err.message) +
+      '). This page reads the JSON over HTTP, so serve the folder rather than opening the file directly.</p>');
+  });
+})();
+</script>
+
+</body>
+</html>

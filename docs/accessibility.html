@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility — Inclusively Zera</title>
+<meta name="description" content="What Inclusively Zera does for disabled shoppers, how each feature works, where it is supported, and what is still missing.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="stylesheet" href="../assets/a11y.css">
+<style>
+  .doc { max-width: 58rem; margin-inline: auto; padding-block: clamp(2.5rem, 6vw, 5rem); }
+  .doc-head { border-bottom: 2px solid var(--ink); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
+  .doc h1 {
+    font-size: clamp(2.25rem, 5.5vw, 4rem); font-weight: 300;
+    font-variation-settings: 'SOFT' 20, 'WONK' 1; margin-bottom: 0.75rem;
+  }
+  .doc .lede { font-size: 1.0625rem; color: var(--ink-2); max-width: 60ch; }
+  .doc h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 300;
+    font-variation-settings: 'SOFT' 20, 'WONK' 1;
+    margin: 3rem 0 1rem; padding-bottom: 0.5rem;
+    border-bottom: var(--rule-w) solid var(--hair);
+  }
+  .doc p { max-width: 72ch; color: var(--ink-2); }
+  .doc p + p { margin-top: 0.75rem; }
+
+  .feat { border-bottom: var(--rule-w) solid var(--hair); padding: 1.25rem 0; }
+  .feat h3 { font-size: 1.0625rem; font-weight: 500; margin-bottom: 0.3rem; }
+  .feat .who {
+    font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--sienna); margin-bottom: 0.5rem;
+  }
+  .feat p { font-size: 0.9375rem; }
+  .feat .support { font-size: 0.8125rem; color: var(--slate); margin-top: 0.5rem; }
+
+  .keys { display: grid; grid-template-columns: 6rem 1fr; gap: 0.5rem 1rem; margin-top: 1rem; max-width: 40rem; }
+  .keys dt { text-align: right; }
+  .keys dd { margin: 0; color: var(--ink-2); font-size: 0.9375rem; }
+  .keys kbd {
+    display: inline-block; min-width: 2rem; padding: 0.15rem 0.45rem;
+    border: var(--rule-w) solid var(--line-strong); border-bottom-width: 2px;
+    background: var(--paper-lift); font-family: var(--font-mono);
+    font-size: 0.8125rem; text-align: center;
+  }
+
+  .gap {
+    padding: 1rem 1.25rem; margin-top: 1rem;
+    border-left: 3px solid var(--sienna); background: var(--paper-raised);
+    font-size: 0.9375rem;
+  }
+  .gap ul { margin-top: 0.5rem; }
+  .gap li { padding-left: 1.1rem; position: relative; margin-top: 0.35rem; }
+  .gap li::before { content: "\2014"; position: absolute; left: 0; color: var(--sienna); }
+
+  .back {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; text-decoration: none; margin-bottom: 2rem;
+  }
+  .back::before { content: "\2190"; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#doc">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <div class="logo-block">
+      <a class="logo" href="../index.html">Inclusively <em>Zera</em></a>
+      <p class="logo-subtitle">by House of Zera</p>
+    </div>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="../index.html">Shop</a>
+      <a href="../index.html#story">Our story</a>
+      <a href="data-sources.html">Sourcing</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap doc" id="doc">
+  <a class="back" href="../index.html">Back to the shop</a>
+
+  <div class="doc-head">
+    <h1>Accessibility</h1>
+    <p class="lede">
+      This shop was built for disabled shoppers first, not retrofitted for them afterwards. This page
+      is the honest account: what each feature does, who it is for, where it works, and what is
+      still missing.
+    </p>
+  </div>
+
+  <h2>Speech</h2>
+
+  <div class="feat">
+    <h3>Read aloud</h3>
+    <p class="who">Blind and low-vision shoppers · reading difficulties · fatigue</p>
+    <p>
+      Turn it on and the page speaks whatever you point at or tab to, with the spoken block
+      highlighted as it reads. Every piece also gets its own Listen button, which reads a single
+      composed sentence: what it is, what it costs, how it fastens, what it is made of, where it
+      came from, and which of your quiz answers it matches. That sentence is assembled from the
+      item's own record, so it can never fall out of step with what is on screen.
+    </p>
+    <p class="support">
+      Uses the browser's built-in speech synthesis. Works in Chrome, Edge and Safari. Firefox needs a
+      system voice installed. If no voice is available the control says so rather than failing quietly.
+      This is not a replacement for a screen reader — the page is built to work properly with one.
+    </p>
+  </div>
+
+  <div class="feat">
+    <h3>Audio guide</h3>
+    <p class="who">Blind and low-vision shoppers · anyone who would rather listen than read</p>
+    <p>
+      A five-chapter spoken walkthrough with play, pause, chapter skip and a speed control. The full
+      transcript sits underneath and highlights the chapter being read; you can jump to any chapter
+      by clicking its text. There is no audio file — the chapters are spoken by your own device voice,
+      which means they always match the transcript exactly and respect the voice and rate you chose.
+    </p>
+    <p class="support">If speech is unavailable the transcript is shown as a complete standalone document.</p>
+  </div>
+
+  <div class="feat">
+    <h3>Voice control</h3>
+    <p class="who">Limited hand mobility · tremor · RSI · anyone shopping hands-free</p>
+    <p>
+      Answer the quiz and move around by speaking. Say an option's name to select it, or use
+      <b>next</b>, <b>back</b>, <b>bag</b>, <b>close</b>, <b>stop</b>, <b>settings</b>, <b>bigger</b>,
+      <b>smaller</b>, <b>dark</b>, <b>light</b>, <b>contrast</b>. A live panel shows what was heard,
+      so a misrecognition is visible rather than silent.
+    </p>
+    <p class="support">
+      Uses on-device speech recognition in Chrome, Edge and Safari; the control is disabled with an
+      explanation elsewhere. Needs microphone permission. We never record, store or transmit audio.
+    </p>
+  </div>
+
+  <h2>Sound</h2>
+
+  <div class="feat">
+    <h3>Sound cues</h3>
+    <p class="who">Blind and low-vision shoppers · anyone who misses silent state changes</p>
+    <p>
+      A short distinct tone when something is added, removed, advanced or rejected, so a confirmation
+      you cannot see still registers. Volume is adjustable and the whole thing can be switched off.
+      The tones are generated in the browser, so there is no download and no delay, and every cue is
+      paired with a screen-reader announcement — sound is never the only signal.
+    </p>
+  </div>
+
+  <h2>Seeing</h2>
+
+  <div class="feat">
+    <h3>Three themes, text size, line and letter spacing</h3>
+    <p class="who">Low vision · light sensitivity · dyslexia · astigmatism</p>
+    <p>
+      Light, dark and a genuine high-contrast theme with a separate flat palette and thicker rules,
+      not just darker text. Text scales from 90% to 200%, and line spacing and letter spacing are
+      independently adjustable. The whole layout is built on relative units, so nothing overlaps or
+      clips as the type grows.
+    </p>
+  </div>
+
+  <div class="feat">
+    <h3>Dyslexia-friendly font, link underlines, bold focus ring, reading ruler</h3>
+    <p class="who">Dyslexia · low vision · attention and tracking difficulties</p>
+    <p>
+      OpenDyslexic with opened-up word spacing and a narrower measure. Every link forced to underline,
+      so colour is never the only marker. A 4-pixel high-visibility focus ring for keyboard use on a
+      bright screen. A reading ruler that follows the pointer and dims everything above and below the
+      line you are on.
+    </p>
+  </div>
+
+  <div class="feat">
+    <h3>Catalogue plates</h3>
+    <p class="who">Low vision · slow connections</p>
+    <p>
+      Each piece is drawn as a vector silhouette filled with a photograph of the real textile. Because
+      the plate is vector, it stays sharp at 200% text size instead of blurring, and it re-inks itself
+      for the dark and high-contrast themes. The colourway is also stated in words and shown as a
+      swatch, so the drawing is never the only evidence of what colour something is.
+    </p>
+  </div>
+
+  <h2>Movement and motor</h2>
+
+  <div class="feat">
+    <h3>Reduce motion</h3>
+    <p class="who">Vestibular disorders · migraine · motion sensitivity</p>
+    <p>
+      Removes every fade, slide and smooth scroll. Set automatically if your operating system already
+      asks for reduced motion, and the page keeps following that setting if you change it while the
+      page is open.
+    </p>
+  </div>
+
+  <div class="feat">
+    <h3>Large touch targets</h3>
+    <p class="who">Tremor · limited dexterity · touch screens</p>
+    <p>
+      Grows every control to at least 48&nbsp;px with more space between them. Without it, controls
+      already meet 44&nbsp;px.
+    </p>
+  </div>
+
+  <div class="feat">
+    <h3>Dressing filters</h3>
+    <p class="who">Limited hand function · one-handed dressing · wheelchair users · sensory sensitivity</p>
+    <p>
+      The one feature here that is about the clothes rather than the interface. Filter the collection
+      by how a piece is <em>put on</em>: pulls on with no fastenings, can be fastened one-handed, cut
+      for seated wear, no sewn-in tags. Every card states its fastenings, and the product passport
+      spells out the details — button diameter, zip-pull size, whether a coat's buttons are magnetic.
+      This information exists in the database as structured fields, not as marketing copy.
+    </p>
+  </div>
+
+  <h2>Keyboard</h2>
+  <p>
+    Everything works from the keyboard. Dialogs trap focus, close on Escape and return focus to
+    whatever opened them. There is a skip link, and headings move focus when a step or section changes.
+    Shortcuts are ignored while you are typing in a field.
+  </p>
+  <dl class="keys">
+    <dt><kbd>?</kbd></dt><dd>Keyboard shortcuts</dd>
+    <dt><kbd>A</kbd></dt><dd>Accessibility settings</dd>
+    <dt><kbd>R</kbd></dt><dd>Read aloud on or off</dd>
+    <dt><kbd>S</kbd></dt><dd>Stop speaking</dd>
+    <dt><kbd>G</kbd></dt><dd>Audio guide</dd>
+    <dt><kbd>B</kbd></dt><dd>Your bag</dd>
+    <dt><kbd>C</kbd></dt><dd>Cycle theme</dd>
+    <dt><kbd>+</kbd> <kbd>&minus;</kbd> <kbd>0</kbd></dt><dd>Text size up, down, reset</dd>
+    <dt><kbd>Esc</kbd></dt><dd>Close anything, and stop speaking</dd>
+  </dl>
+
+  <h2>Privacy</h2>
+  <p>
+    Every setting is stored in this browser's local storage and nowhere else. Nothing is sent to a
+    server, because there is no server. Speech recognition runs on your device. Read aloud and voice
+    control both start switched off after a reload, because a browser will not start audio or open a
+    microphone without you asking first — your saved preference is kept, but the feature waits for you.
+  </p>
+
+  <h2>What is still missing</h2>
+  <div class="gap">
+    <p>An accessibility page that only lists wins is not an accessibility page. Known gaps:</p>
+    <ul>
+      <li>No screen-reader testing report yet. The markup uses correct landmarks, live regions and
+        roles, but it has not been run through a formal NVDA, JAWS or VoiceOver pass.</li>
+      <li>No translation or plain-language alternative. The reading level is moderate, not simple.</li>
+      <li>Voice control recognises English only, and matches option labels literally.</li>
+      <li>Checkout is not connected, so the hardest part of an accessible purchase — payment,
+        address entry, error recovery — is untested.</li>
+      <li>The dressing information is authored by hand per item. At real catalogue scale it needs to
+        come from the supplier's own data or a Digital Product Passport feed.</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:1.5rem">
+    Found something that does not work for you? Email
+    <a href="mailto:house.zera.info@gmail.com">house.zera.info@gmail.com</a>.
+  </p>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <p>© 2026 Inclusively Zera. Built for everyone, on purpose.</p>
+    <p><a href="data-sources.html">Where the clothes come from</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

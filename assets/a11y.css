@@ -1,0 +1,844 @@
+/* =============================================================================
+   Inclusively Zera — accessibility layer styles
+   Loaded after styles.css. Holds the accessibility panel, the audio guide, the
+   product passport, and every visual change a preference can make.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Preference-driven typography
+   Set as custom properties by a11y.js so nothing writes inline styles to nodes.
+   -------------------------------------------------------------------------- */
+:root {
+  --user-line-height: 1.6;
+  --user-letter-spacing: 0em;
+  --a11y-accent: var(--teal-strong, #2e444e);
+}
+
+body,
+.body, p, li, dd, dt, .deck {
+  line-height: var(--user-line-height);
+  letter-spacing: var(--user-letter-spacing);
+}
+
+/* Underline every link on request — never colour alone. */
+[data-underline="on"] a { text-decoration: underline !important; text-underline-offset: 3px; }
+
+/* A focus ring that survives a bright screen or low vision. */
+[data-bold-focus="on"] :focus-visible {
+  outline: 4px solid #0b57d0 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 8px rgba(11, 87, 208, 0.32) !important;
+}
+
+/* Meet the 44–48px target guidance without redrawing the page. */
+[data-large-targets="on"] button,
+[data-large-targets="on"] .btn,
+[data-large-targets="on"] select,
+[data-large-targets="on"] input[type="checkbox"],
+[data-large-targets="on"] input[type="radio"],
+[data-large-targets="on"] .check-row,
+[data-large-targets="on"] .quiz-option {
+  min-height: 48px;
+}
+[data-large-targets="on"] input[type="checkbox"],
+[data-large-targets="on"] input[type="radio"] { width: 26px; height: 26px; }
+[data-large-targets="on"] .check-row,
+[data-large-targets="on"] .quiz-option { padding-block: 0.65rem; }
+[data-large-targets="on"] .product-actions { gap: 0.7rem; }
+[data-large-targets="on"] .a11y-row { gap: 1.25rem 1.5rem; }
+
+/* Reduced motion is a hard stop, not a suggestion. */
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation-duration: 1ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 1ms !important;
+  scroll-behavior: auto !important;
+}
+[data-motion="reduced"] .fade-item { opacity: 1 !important; transform: none !important; }
+
+/* -----------------------------------------------------------------------------
+   Dark theme
+   The base sheet was written light-first, so this remaps its tokens rather than
+   restating every rule.
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  --bone: #121110;
+  --bone-deep: #1A1917;
+  --paper: #121110;
+  --paper-raised: #1B1A18;
+  --paper-lift: #232220;
+  --ink: #F0EAE1;
+  --ink-2: #C4BBAE;
+  --slate: #9A9083;
+  --ink-invert: #121110;
+  --line: #3A3733;
+  --line-strong: #565049;
+  --hair: rgba(240, 234, 225, 0.16);
+  --teal: #8FB8AF;
+  --teal-strong: #A9CDC4;
+  --teal-deep: #0C1614;
+  --teal-wash: #1E2C29;
+  --sienna: #E08C57;
+  --sienna-wash: #2E1E12;
+  --focus: #A9CDC4;
+  color-scheme: dark;
+}
+[data-theme="dark"] body { background: var(--paper); color: var(--ink); }
+[data-theme="dark"] body::before { opacity: 0.2; mix-blend-mode: screen; }
+[data-theme="dark"] img { filter: grayscale(0.3) brightness(0.9) contrast(1.04); }
+[data-theme="dark"] .hero-media img { filter: grayscale(1) brightness(0.86) contrast(1.08); }
+[data-theme="dark"] .a11y-bar { --bar-bg: #0C1512; }
+[data-theme="dark"] .brand-credit { background: #0C1614; border-block: 1px solid var(--hair); }
+[data-theme="dark"] .brand-credit h2,
+[data-theme="dark"] .t-letter { color: var(--ink); }
+[data-theme="dark"] .brand-credit p { color: var(--ink-2); }
+[data-theme="dark"] .brand-credit a,
+[data-theme="dark"] footer a { color: var(--teal-strong); }
+[data-theme="dark"] footer { background: #0B0A09; color: var(--ink-2); }
+[data-theme="dark"] .product-media::before,
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-checkout { color: var(--ink-invert); }
+[data-theme="dark"] .icon-btn:hover,
+[data-theme="dark"] .btn-secondary:hover,
+[data-theme="dark"] .btn-add:hover,
+[data-theme="dark"] .qty-btn:hover { color: var(--ink-invert); }
+[data-theme="dark"] .cart-count { color: #121110; }
+
+/* -----------------------------------------------------------------------------
+   Reading ruler
+   Four fixed panels rather than one giant box-shadow, so it stays cheap to
+   repaint on pointer move.
+   -------------------------------------------------------------------------- */
+.reading-ruler {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  --ruler-y: 50vh;
+  --ruler-h: 96px;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(10, 12, 14, 0.55) 0,
+      rgba(10, 12, 14, 0.55) calc(var(--ruler-y) - var(--ruler-h) / 2),
+      transparent          calc(var(--ruler-y) - var(--ruler-h) / 2),
+      transparent          calc(var(--ruler-y) + var(--ruler-h) / 2),
+      rgba(10, 12, 14, 0.55) calc(var(--ruler-y) + var(--ruler-h) / 2),
+      rgba(10, 12, 14, 0.55) 100%
+    );
+}
+
+/* -----------------------------------------------------------------------------
+   Currently-being-spoken highlight
+   -------------------------------------------------------------------------- */
+.is-speaking {
+  background: color-mix(in srgb, var(--teal) 22%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent);
+  border-radius: 2px;
+}
+[data-contrast="high"] .is-speaking { background: #ffe680; box-shadow: 0 0 0 3px #ffe680; }
+
+/* -----------------------------------------------------------------------------
+   Header: the "all settings" trigger
+   -------------------------------------------------------------------------- */
+.a11y-group-end { margin-left: auto; }
+
+.a11y-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 30px;
+  padding: 0.2rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--bar-fg) 42%, transparent);
+  background: transparent;
+  color: var(--bar-fg);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
+}
+.a11y-open:hover { background: var(--bar-fg); border-color: var(--bar-fg); color: var(--bar-bg); }
+
+@media (max-width: 720px) {
+  .a11y-group-end { margin-left: 0; width: 100%; }
+  .a11y-open { width: 100%; justify-content: center; }
+}
+
+/* -----------------------------------------------------------------------------
+   Hero: sourcing note and the listen button
+   -------------------------------------------------------------------------- */
+.sourcing-note {
+  margin-top: 1.75rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--hair);
+  max-width: 44ch;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--slate);
+}
+.sourcing-note strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+.btn-speak { display: inline-flex; align-items: center; gap: 0.5rem; }
+.hero-ctas .btn-speak svg { opacity: 0.85; }
+
+/* -----------------------------------------------------------------------------
+   Product card: sourcing line and dressing pills
+   -------------------------------------------------------------------------- */
+.product-source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.4rem;
+  margin: 0.75rem 0 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--hair);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+}
+.product-source .source-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+  flex: none;
+  transform: translateY(-2px);
+}
+.product-source strong {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.source-cc {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.04em;
+  color: var(--slate);
+}
+.source-cc::before { content: "("; }
+.source-cc::after { content: ")"; }
+.source-reg {
+  flex-basis: 100%;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sienna);
+}
+
+.fit-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+}
+.fit-pill {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.42rem;
+  border: 1px solid color-mix(in srgb, var(--teal) 34%, transparent);
+  color: var(--teal-strong);
+  background: color-mix(in srgb, var(--teal) 7%, transparent);
+}
+[data-contrast="high"] .fit-pill { border-width: 2px; background: transparent; }
+
+.product-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+.product-actions .btn-add { flex: 1 1 auto; white-space: nowrap; }
+.product-actions .btn-ghost { flex: 0 0 auto; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 42px;
+  padding: 0.3rem 0.8rem;
+  border: var(--rule-w) solid var(--line-strong);
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease), color var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
+}
+.btn-ghost:hover { background: var(--ink); border-color: var(--ink); color: var(--ink-invert); }
+
+/* Square icon-only control — used for the per-piece Listen button. */
+.btn-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 42px;
+  min-height: 42px;
+  padding: 0;
+  border: var(--rule-w) solid var(--line-strong);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease), color var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
+}
+.btn-icon:hover { background: var(--teal-strong); border-color: var(--teal-strong); color: var(--ink-invert); }
+
+/* -----------------------------------------------------------------------------
+   Sidebar filters
+   -------------------------------------------------------------------------- */
+.filter-hint {
+  margin: 0.15rem 0 0.6rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--slate);
+}
+.filter-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+.channel-select {
+  width: 100%;
+  min-height: 40px;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  background: var(--paper-raised);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88rem;
+}
+
+/* -----------------------------------------------------------------------------
+   Shared dialog chrome
+   -------------------------------------------------------------------------- */
+.head-actions { display: flex; align-items: center; gap: 0.5rem; }
+
+.a11y-panel,
+.audio-guide {
+  position: fixed;
+  z-index: 60;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: min(430px, 100vw);
+  background: var(--paper-raised);
+  border-left: 1px solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  box-shadow: -18px 0 48px rgba(0, 0, 0, 0.18);
+}
+.a11y-panel[hidden],
+.audio-guide[hidden] { display: none; }
+
+.a11y-panel-body,
+.audio-body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 1.25rem;
+}
+
+.a11y-panel-lede,
+.audio-lede {
+  margin: 0 0 1.25rem;
+  font-size: 0.88rem;
+  color: var(--slate);
+}
+
+.a11y-section { margin-bottom: 1.75rem; }
+.a11y-section h3 {
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-strong);
+}
+
+.a11y-field {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
+}
+.a11y-field:last-child { border-bottom: 0; }
+.a11y-field-stack { flex-direction: column; align-items: stretch; gap: 0.4rem; }
+.a11y-field-text { display: flex; flex-direction: column; gap: 0.15rem; }
+.a11y-field-label { font-size: 0.92rem; font-weight: 600; }
+.a11y-field-hint { font-size: 0.78rem; line-height: 1.45; color: var(--slate); }
+.a11y-field.is-unavailable { opacity: 0.55; }
+
+.a11y-field input[type="range"] { width: 100%; accent-color: var(--teal-strong); min-height: 28px; }
+.a11y-field output { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--teal-strong); }
+
+.a11y-test { width: 100%; margin-top: 0.9rem; }
+
+.a11y-panel-foot {
+  display: flex;
+  gap: 0.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.a11y-panel-foot .btn { flex: 1; }
+
+/* -----------------------------------------------------------------------------
+   Switch control
+   Built on role="switch" + aria-checked, so the visual and the exposed state
+   cannot drift apart.
+   -------------------------------------------------------------------------- */
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: none;
+  padding: 0.25rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.switch[disabled] { cursor: not-allowed; }
+
+.switch-track {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  flex: none;
+  background: var(--line);
+  border: 1px solid var(--line-strong);
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  transition: transform 160ms ease;
+}
+.switch[aria-checked="true"] .switch-track { background: var(--teal-strong); border-color: var(--teal-strong); }
+.switch[aria-checked="true"] .switch-thumb { transform: translateX(20px); }
+.switch-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 2.1em;
+  text-align: left;
+  color: var(--slate);
+}
+.switch[aria-checked="true"] .switch-text { color: var(--teal-strong); }
+
+/* A tick mark so the on-state is not carried by colour and position alone. */
+.switch[aria-checked="true"] .switch-thumb::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  width: 6px;
+  height: 10px;
+  border: solid var(--teal-strong);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* -----------------------------------------------------------------------------
+   Segmented control (theme)
+   -------------------------------------------------------------------------- */
+.seg { display: flex; border: 1px solid var(--line-strong); }
+.seg button {
+  flex: 1;
+  min-height: 40px;
+  padding: 0.4rem 0.5rem;
+  border: 0;
+  border-right: 1px solid var(--line-strong);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.seg button:last-child { border-right: 0; }
+.seg button[aria-checked="true"] { background: var(--teal-strong); color: var(--paper-raised); }
+[data-theme="dark"] .seg button[aria-checked="true"] { color: #14161a; }
+
+/* -----------------------------------------------------------------------------
+   Audio guide
+   -------------------------------------------------------------------------- */
+.audio-unsupported {
+  padding: 0.7rem 0.8rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--teal-strong);
+  background: var(--teal-wash);
+  font-size: 0.85rem;
+}
+
+.audio-now { margin-bottom: 1rem; }
+.audio-chapter-label {
+  margin: 0 0 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--teal-strong);
+}
+.audio-progress { height: 5px; background: var(--line); }
+.audio-progress-fill {
+  height: 100%;
+  background: var(--teal-strong);
+  transition: width 320ms ease;
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 0;
+}
+.audio-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0 0.7rem;
+  border: 1px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.audio-btn:hover { background: var(--teal-wash); border-color: var(--teal-strong); }
+.audio-btn-main {
+  background: var(--teal-strong);
+  border-color: var(--teal-strong);
+  color: var(--paper-raised);
+  padding: 0 1.1rem;
+  font-weight: 600;
+}
+[data-theme="dark"] .audio-btn-main { color: #14161a; }
+.audio-btn-main:hover { background: var(--teal-deep); border-color: var(--teal-deep); }
+.audio-btn-text { font-size: 0.9rem; }
+
+.audio-speed {
+  padding: 0.6rem 0 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.audio-speed label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.audio-speed output { font-variant-numeric: tabular-nums; color: var(--teal-strong); }
+.audio-speed input[type="range"] { width: 100%; accent-color: var(--teal-strong); min-height: 28px; }
+
+.audio-h {
+  margin: 1.25rem 0 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-strong);
+}
+
+.audio-transcript { list-style: none; margin: 0; padding: 0; counter-reset: ch; }
+.audio-chapter { border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent); }
+.audio-chapter-btn {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 0.2rem 0.8rem 2rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+}
+.audio-chapter-btn::before {
+  counter-increment: ch;
+  content: counter(ch);
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 1.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+}
+.audio-chapter-btn:hover { background: var(--teal-wash); }
+.audio-chapter-title {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.2rem;
+}
+.audio-chapter-text {
+  display: block;
+  font-size: 0.86rem;
+  line-height: var(--user-line-height);
+  color: var(--slate);
+}
+.audio-chapter.is-current { background: var(--teal-wash); }
+.audio-chapter.is-current .audio-chapter-btn::before { color: var(--teal-strong); }
+.audio-chapter.is-current .audio-chapter-text { color: var(--ink); }
+.audio-chapter.is-current .audio-chapter-btn {
+  box-shadow: inset 3px 0 0 var(--teal-strong);
+}
+
+/* -----------------------------------------------------------------------------
+   Product passport
+   -------------------------------------------------------------------------- */
+.passport-modal { max-width: min(640px, 94vw); }
+
+.pp-lede { margin: 0 0 1.25rem; font-size: 1rem; line-height: var(--user-line-height); }
+
+.pp-h {
+  margin: 1.5rem 0 0.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-strong);
+}
+.pp-h:first-child { margin-top: 0; }
+
+.pp-note { margin: 0 0 0.8rem; font-size: 0.8rem; color: var(--slate); }
+.pp-sub { font-size: 0.82rem; color: var(--slate); }
+
+.pp-dl { margin: 0; }
+.pp-row {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 32%) 1fr;
+  gap: 0.5rem 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
+}
+.pp-row:last-child { border-bottom: 0; }
+.pp-row dt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+.pp-row dd { margin: 0; font-size: 0.92rem; line-height: var(--user-line-height); }
+
+@media (max-width: 520px) {
+  .pp-row { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+
+/* Fibre composition, shown as a proportion rather than a list of numbers. */
+.pp-comp { list-style: none; margin: 0 0 1rem; padding: 0; }
+.pp-comp li {
+  position: relative;
+  padding: 0.5rem 0.6rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.pp-comp b { float: right; font-variant-numeric: tabular-nums; }
+.pp-bar {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--pct);
+  background: color-mix(in srgb, var(--teal) 20%, transparent);
+  z-index: 0;
+}
+.pp-comp li > * { position: relative; z-index: 1; }
+[data-contrast="high"] .pp-bar { background: #ffe680; }
+
+.shortcut-list kbd {
+  display: inline-block;
+  min-width: 1.9rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  background: var(--paper-raised);
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* -----------------------------------------------------------------------------
+   Voice control heads-up display
+   -------------------------------------------------------------------------- */
+.voice-hud {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 70;
+  max-width: min(30rem, 92vw);
+  padding: 0.65rem 1rem;
+  background: var(--teal-deep);
+  color: #fff;
+  font-size: 0.88rem;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+}
+.voice-hud[hidden] { display: none; }
+.voice-hud::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: #ff5f5f;
+  animation: voice-pulse 1.6s ease-in-out infinite;
+}
+@keyframes voice-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+/* -----------------------------------------------------------------------------
+   Boot failure notice (file:// with no server)
+   -------------------------------------------------------------------------- */
+.boot-error {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 2px solid var(--line-strong);
+  background: var(--paper-raised);
+}
+.boot-error h2 { margin-top: 0; font-size: 1.3rem; }
+.boot-error pre {
+  padding: 0.7rem 0.9rem;
+  background: var(--teal-wash);
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+/* -----------------------------------------------------------------------------
+   Small screens
+   -------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .a11y-panel,
+  .audio-guide { width: 100vw; border-left: 0; }
+}
+
+/* Respect a system-level reduced-motion request even before JS runs. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Honour a system contrast preference on first paint. */
+@media (prefers-contrast: more) {
+  :root:not([data-theme]) { --line: #000; --line-strong: #000; --slate: #26262a; }
+}
+
+/* -----------------------------------------------------------------------------
+   Catalogue plates
+   The drawn stand-in for photography. Colours are custom properties so a plate
+   re-inks itself for the light, dark and high-contrast themes.
+   -------------------------------------------------------------------------- */
+.product-media {
+  --plate-ground: var(--paper-lift);
+  --plate-ink: #241F18;
+  --plate-rule: color-mix(in srgb, var(--ink) 30%, transparent);
+  background:
+    linear-gradient(160deg,
+      color-mix(in srgb, var(--paper-lift) 92%, var(--teal)) 0%,
+      var(--paper-lift) 55%,
+      var(--bone-deep) 100%);
+}
+[data-theme="dark"] .product-media {
+  /* A mid ground, not the page ground: a jet-black piece has to separate from
+     the plate as clearly in dark mode as it does on bone. */
+  --plate-ground: #6E6A64;
+  --plate-ink: #14120F;
+  --plate-rule: rgba(20, 18, 15, 0.45);
+  background: linear-gradient(160deg, #8B8680 0%, #77726C 55%, #625E59 100%);
+}
+[data-theme="dark"] .cart-thumb {
+  --plate-ink: #14120F;
+  background: #77726C;
+}
+[data-contrast="high"] .product-media {
+  --plate-ground: #fff;
+  --plate-ink: #000;
+  --plate-rule: #000;
+  background: #fff;
+}
+
+.plate {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--motion-slow) var(--ease);
+}
+.product-card:hover .plate { transform: scale(1.035); }
+
+/* Registration marks read as printer's furniture — keep them quiet. */
+.plate-marks { opacity: 0.5; }
+[data-contrast="high"] .plate-marks { opacity: 1; }
+
+/* The colourway, stated as a chip so the drawing is not the only evidence. */
+.product-swatch {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--sw);
+  border-top: var(--rule-w) solid var(--hair);
+  border-right: var(--rule-w) solid var(--hair);
+}
+[data-contrast="high"] .product-swatch { border-color: #000; border-width: 2px; }
+
+.cart-thumb {
+  --plate-ground: var(--paper-lift);
+  --plate-ink: #241F18;
+  --plate-rule: color-mix(in srgb, var(--ink) 26%, transparent);
+  aspect-ratio: 3 / 4;
+  background: var(--bone-deep);
+  border: var(--rule-w) solid var(--hair);
+  overflow: hidden;
+}
+
+/* Textile photograph credit — CC BY and BY-SA require it to travel with the image. */
+.fabric-credit {
+  margin: 0.4rem 0 0;
+  font-size: 0.625rem;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--slate);
+}
+.fabric-credit a {
+  color: var(--slate);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.fabric-credit a:hover { color: var(--sienna); }

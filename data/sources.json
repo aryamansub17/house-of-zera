@@ -1,0 +1,214 @@
+{
+  "$schema": "./schema/sources.schema.json",
+  "version": "1.0.0",
+  "updated": "2026-09-03",
+  "disclaimer": "The organisations listed under `channels` are real, publicly documented actors in the EU textile reuse and deadstock supply chain. Listing one here records it as a researched sourcing route for House of Zera — it is NOT a claim of an existing commercial partnership, and no inventory in this prototype has been supplied by them. `status` records where each route actually stands.",
+  "regulations": [
+    {
+      "id": "espr-unsold-ban",
+      "short": "ESPR unsold-goods destruction ban",
+      "instrument": "Regulation (EU) 2024/1781 (Ecodesign for Sustainable Products Regulation), Article 25 and Annex VII",
+      "in_application_since": "2026-07-19",
+      "summary": "Large companies placing textiles on the EU market are prohibited from destroying unsold apparel, clothing accessories and footwear. Destruction is permitted only in narrowly defined cases (safety risk, severe damage, unusable returns) and must be documented and justified. Medium-sized companies (50-249 employees) are in scope from 19 July 2030; micro and small companies are exempt but must still report.",
+      "why_it_creates_supply": "Stock that was previously incinerated or landfilled now has to be redirected. Resale, donation, remanufacture and reuse become the compliant exits, which puts a large volume of never-worn, tagged garments into secondary channels for the first time.",
+      "scale": "An estimated 4-9% of textile products placed on the EU market were destroyed before use — roughly 264,000 to 594,000 tonnes per year.",
+      "sources": [
+        "https://environment.ec.europa.eu/news/ban-destruction-unsold-clothes-and-shoes-enters-application-2026-07-17_en",
+        "https://www.anthesisgroup.com/insights/espr-the-ban-on-destruction-of-unsold-goods/",
+        "https://cms.law/en/aut/legal-updates/new-eu-rules-to-prevent-the-destruction-of-unsold-textiles"
+      ],
+      "badge": "Unsold-goods ban"
+    },
+    {
+      "id": "wfd-textile-epr",
+      "short": "EU textile Extended Producer Responsibility",
+      "instrument": "Directive (EU) 2025/1892 amending the Waste Framework Directive 2008/98/EC",
+      "in_force_since": "2025-10-16",
+      "member_state_deadline": "2028-04",
+      "summary": "Every EU member state must establish mandatory Extended Producer Responsibility schemes for textiles. Producers, brands and retailers finance the separate collection, sorting, preparation for reuse, and recycling of textile waste, register with a national scheme in each market they sell into, report volumes and materials placed on the market, and pay eco-modulated fees that scale with durability and recyclability.",
+      "why_it_creates_supply": "EPR fees make holding and destroying stock more expensive than diverting it, and they fund the sorting infrastructure that makes graded, reusable secondhand garments available at scale. Separate collection of textiles has been mandatory across the EU since 1 January 2025, which sharply increased sorter feedstock.",
+      "sources": [
+        "https://www.carbonfact.com/blog/policy/textile-epr-overview",
+        "https://h2compliance.com/eu-textile-epr-legislation-member-states-update/",
+        "https://www.ecosistant.eu/en/eu-textile-epr-directive-for-fashion-brands/"
+      ],
+      "badge": "Textile EPR"
+    },
+    {
+      "id": "dpp-textiles",
+      "short": "Digital Product Passport for textiles",
+      "instrument": "Regulation (EU) 2024/1781 (ESPR), delegated acts expected 2027",
+      "expected": "Basic passport 2027, full passport 2028-2029",
+      "summary": "Textiles sold in the EU will carry a machine-readable passport declaring fibre composition and percentages at the precision required by the EU Textile Labelling Regulation 1007/2011, geographic origin for natural fibres, supply-chain traceability to at least tier 2, durability, recyclability, chemical compliance, and environmental impact. Pilot work under Trace4Value converged on roughly 126 data points, of which 25-30 are shown to a shopper at the point of scanning.",
+      "why_it_matters_here": "The passport is the reason this prototype stores composition, origin, condition and recyclability as first-class fields on every item rather than as marketing copy. It is also an accessibility win: a structured passport can be read aloud, translated, or enlarged, which a printed care label cannot.",
+      "sources": [
+        "https://www.renoon.com/blog/textile-digital-product-passport-requirements-products-covered-and-expected-data-requirements",
+        "https://trustrace.com/knowledge-hub/how-fashion-brands-can-prepare-for-the-eu-digital-product-passport-a-practical-guide-1",
+        "https://dpp-tool.com/en/blog/textile-product-passport/"
+      ],
+      "badge": "Product passport"
+    }
+  ],
+  "channels": [
+    {
+      "id": "boer-group",
+      "name": "Boer Group",
+      "country": "NL",
+      "type": "industrial-sorter",
+      "supplies": [
+        "post-consumer graded reuse",
+        "credential clothing"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "One of the largest industrial textile sorters in Europe; participant in the Fashion for Good 'Sorting for Circularity Europe' project.",
+      "source": "https://www.fashionforgood.com/our_news/sorting-for-circularity-europe-project-findings/"
+    },
+    {
+      "id": "texaid",
+      "name": "TEXAID",
+      "country": "CH",
+      "type": "industrial-sorter",
+      "supplies": [
+        "post-consumer graded reuse",
+        "rewearable A-grade"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "Collector and sorter operating across Europe; 'Sorting for Circularity Europe' participant.",
+      "source": "https://www.fashionforgood.com/our_news/sorting-for-circularity-europe-project-findings/"
+    },
+    {
+      "id": "soex-ico",
+      "name": "SOEX Group / I:CO",
+      "country": "DE",
+      "type": "industrial-sorter",
+      "supplies": [
+        "post-consumer graded reuse",
+        "take-back stream"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "Runs in-store take-back for retail partners and sorts the resulting stream; 'Sorting for Circularity Europe' participant.",
+      "source": "https://en.wikipedia.org/wiki/SOEX_Group"
+    },
+    {
+      "id": "wtorpol",
+      "name": "Wtórpol",
+      "country": "PL",
+      "type": "industrial-sorter",
+      "supplies": [
+        "post-consumer graded reuse"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "Major Polish collector and sorter; 'Sorting for Circularity Europe' participant.",
+      "source": "https://global-recycling.info/archives/5492"
+    },
+    {
+      "id": "modare-caritas",
+      "name": "Moda Re- (Cáritas)",
+      "country": "ES",
+      "type": "social-enterprise-sorter",
+      "supplies": [
+        "post-consumer graded reuse"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "Social-economy collection and sorting network; 'Sorting for Circularity Europe' participant. Social-enterprise sorters are a natural fit for a brand whose thesis is inclusion.",
+      "source": "https://global-recycling.info/archives/5492"
+    },
+    {
+      "id": "jmp-wilcox",
+      "name": "JMP Wilcox (Textile Recycling International)",
+      "country": "GB",
+      "type": "industrial-sorter",
+      "supplies": [
+        "post-consumer graded reuse"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "Long-established UK sorter; 'Sorting for Circularity Europe' participant.",
+      "source": "https://www.fashionforgood.com/our_news/sorting-for-circularity-europe-project-findings/"
+    },
+    {
+      "id": "recovo",
+      "name": "Recovo",
+      "country": "ES",
+      "type": "deadstock-marketplace",
+      "supplies": [
+        "deadstock fabric",
+        "surplus rolls"
+      ],
+      "driver": "espr-unsold-ban",
+      "status": "researched",
+      "note": "B2B platform reselling deadstock fabric that would otherwise be classified as textile waste, for EU brands and suppliers.",
+      "source": "https://www.fibre2fashion.com/news/apparel-news/eu-deadstock-ban-2026-fashion-s-unsold-inventory-reckoning-310812-newsdetails.htm"
+    },
+    {
+      "id": "wasted-fabrics",
+      "name": "Wasted Fabrics",
+      "country": "EU",
+      "type": "deadstock-marketplace",
+      "supplies": [
+        "designer deadstock fabric"
+      ],
+      "driver": "espr-unsold-ban",
+      "status": "researched",
+      "note": "European designer deadstock sold in small cuts — well suited to one-of-one and small-run restyling.",
+      "source": "https://wastedfabrics.com/en-us"
+    },
+    {
+      "id": "unfrosen",
+      "name": "Unfrosen",
+      "country": "RO",
+      "type": "deadstock-marketplace",
+      "supplies": [
+        "unsold finished garments"
+      ],
+      "driver": "espr-unsold-ban",
+      "status": "researched",
+      "note": "Private B2B marketplace connecting retailers holding unsold inventory with verified wholesale buyers across Europe.",
+      "source": "https://www.unfrosen.ro/en/blogs/news-resources/how-to-manage-unsold-clothing-inventory-deadstock-reduction-strategies-and-software-solutions-for-fashion-retailers"
+    },
+    {
+      "id": "reverse-resources",
+      "name": "Reverse Resources",
+      "country": "EE",
+      "type": "matching-platform",
+      "supplies": [
+        "sorter-to-buyer matching"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "Open digital platform matching textile waste from sorters with downstream buyers; reported 39 active recyclers and 32 active waste handlers or sorters onboarded.",
+      "source": "https://www.fashionforgood.com/our_news/solving-the-feedstock-gap/"
+    },
+    {
+      "id": "refashion-recycle",
+      "name": "Refashion Recycle",
+      "country": "FR",
+      "type": "matching-platform",
+      "supplies": [
+        "sorter-to-buyer matching"
+      ],
+      "driver": "wfd-textile-epr",
+      "status": "researched",
+      "note": "Platform run in the orbit of Refashion, France's textile EPR producer responsibility organisation; reported 103 recyclers and 66 sorters onboarded.",
+      "source": "https://www.fashionforgood.com/our_news/solving-the-feedstock-gap/"
+    },
+    {
+      "id": "local-thrift",
+      "name": "Local thrift and estate sourcing",
+      "country": "US",
+      "type": "hand-sourced",
+      "supplies": [
+        "one-of-one pieces"
+      ],
+      "driver": null,
+      "status": "active",
+      "note": "The channel House of Zera actually sources from today: hand-picked, mended and restyled pieces, sourced around Austin, Texas. Every item in this prototype's inventory is attributed here unless a partnership is signed.",
+      "source": null
+    }
+  ]
+}
