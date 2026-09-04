@@ -4,6 +4,12 @@ A secondhand and deadstock storefront prototype for **House of Zera**, built so 
 keyboard, low-vision, motor and cognitive access are part of the product rather than a retrofit — and
 so that every piece can name the EU circularity law that put it back into circulation.
 
+The interface is the House of Zera design system from `design/House of Zera Home.dc.html`: Oswald
+condensed over Barlow, slate blue on light grey, zero border radius, hairline rules, numbered
+sections and blueprint corner marks. `assets/styles.css` carries the artboard's own token names
+(`--ground`, `--slate-600`, `--ink-navy` …) and aliases them to the semantic names the accessibility
+layer uses, so there is one palette rather than two.
+
 **Live:** https://aryamansub17.github.io/house-of-zera/
 **Accessibility statement:** [`docs/accessibility.html`](docs/accessibility.html)
 **Sourcing database:** [`docs/data-sources.html`](docs/data-sources.html)
