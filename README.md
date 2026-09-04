@@ -44,6 +44,21 @@ python3 -m http.server 8000
 Then open <http://localhost:8000>. On GitHub Pages this works with no setup. If you do open
 `index.html` directly, the page tells you exactly this rather than showing an empty grid.
 
+### One self-contained file
+
+For sending to someone, or for offline use, there is a packed build with the stylesheets, scripts,
+both databases and every image inlined. It opens from a double-click with no server:
+
+```bash
+python3 build-single-file.py
+```
+
+That writes `inclusively-zera.html` (about 2.7 MB). Rebuild it after changing anything under
+`assets/` or `data/`. Two caveats from `file://`: the web fonts still come from Google, so a machine
+with no network falls back to system fonts, and voice control needs a secure origin, so it is
+unavailable there — the shop, read-aloud, the audio guide, sound cues and every visual setting all
+work.
+
 ---
 
 ## Layout
